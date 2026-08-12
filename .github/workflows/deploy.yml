@@ -27,8 +27,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Fix permissions
+        run: chmod +x node_modules/.bin/*
+
       - name: Build
-        run: npx astro build
+        run: npm run build
 
       - uses: actions/upload-pages-artifact@v3
         with:
