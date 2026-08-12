@@ -1,64 +1,42 @@
 <button
   id="theme-toggle"
-  class="p-2 rounded-lg hover:bg-[var(--color-surface-hover)] transition-all duration-200 text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+  class="relative p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors duration-[var(--duration-fast)] text-[var(--text-tertiary)] hover:text-[var(--text)]"
   title="切换主题"
   aria-label="切换主题"
 >
-  <!-- 太阳图标（亮色模式时显示） -->
-  <svg
-    class="w-5 h-5 theme-icon-light"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="1.5"
-      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-    />
+  <!-- Sun -->
+  <svg id="icon-sun" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
   </svg>
-  <!-- 月亮图标（暗色模式时显示） -->
-  <svg
-    class="w-5 h-5 theme-icon-dark hidden"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="1.5"
-      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-    />
+  <!-- Moon -->
+  <svg id="icon-moon" class="w-[18px] h-[18px] hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
   </svg>
 </button>
 
 <script>
   const btn = document.getElementById('theme-toggle');
   const html = document.documentElement;
-  const lightIcon = document.querySelector('.theme-icon-light')!;
-  const darkIcon = document.querySelector('.theme-icon-dark')!;
+  const sun = document.getElementById('icon-sun')!;
+  const moon = document.getElementById('icon-moon')!;
 
-  // 初始化图标状态
   if (html.getAttribute('data-theme') === 'dark') {
-    lightIcon.classList.add('hidden');
-    darkIcon.classList.remove('hidden');
+    sun.classList.add('hidden');
+    moon.classList.remove('hidden');
   }
 
   btn?.addEventListener('click', () => {
-    if (html.getAttribute('data-theme') === 'dark') {
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    if (isDark) {
       html.removeAttribute('data-theme');
       localStorage.setItem('theme', 'light');
-      lightIcon.classList.remove('hidden');
-      darkIcon.classList.add('hidden');
+      sun.classList.remove('hidden');
+      moon.classList.add('hidden');
     } else {
       html.setAttribute('data-theme', 'dark');
       localStorage.setItem('theme', 'dark');
-      lightIcon.classList.add('hidden');
-      darkIcon.classList.remove('hidden');
+      sun.classList.add('hidden');
+      moon.classList.remove('hidden');
     }
   });
 </script>

@@ -2,18 +2,18 @@
 import { siteData } from '../data/content';
 ---
 
-<section id="about" class="py-24 px-6 relative">
-  <div class="mx-auto max-w-3xl">
-    <!-- Section Title -->
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-2">关于我</h2>
-      <p class="text-sm text-[var(--color-text-muted)] tracking-widest uppercase">About Me</p>
+<section id="about" class="py-24 px-6">
+  <div class="mx-auto max-w-2xl">
+    <div class="text-center mb-12 reveal">
+      <p class="text-[12px] tracking-[0.2em] uppercase text-[var(--text-tertiary)] font-medium mb-3">About</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">关于我</h2>
     </div>
 
-    <!-- Intro paragraphs -->
-    <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 space-y-4 shadow-sm">
+    <div class="card p-8 reveal-stagger">
       {siteData.intro.map((p) => (
-        <p class="text-[var(--color-text-muted)] leading-relaxed">{p}</p>
+        <p class="text-[15px] text-[var(--text-secondary)] leading-relaxed mb-4 last:mb-0">
+          {p}
+        </p>
       ))}
     </div>
   </div>

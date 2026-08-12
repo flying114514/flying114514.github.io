@@ -6,7 +6,6 @@ interface Props {
   description: string;
   keywords?: string;
   author?: string;
-  ogImage?: string;
 }
 
 const {
@@ -14,7 +13,6 @@ const {
   description,
   keywords = '',
   author = '刘辉',
-  ogImage = '/og-default.png',
 } = Astro.props;
 ---
 
@@ -26,31 +24,24 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
 
-    <!-- SEO -->
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <meta name="author" content={author} />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://flying114514.github.io" />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://flying114514.github.io" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={`https://flying114514.github.io${ogImage}`} />
     <meta property="og:locale" content="zh_CN" />
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`https://flying114514.github.io${ogImage}`} />
 
-    <!-- Theme Color -->
     <meta name="theme-color" content="#0d9488" />
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -64,7 +55,6 @@ const {
 </html>
 
 <script>
-  // 主题初始化：在页面渲染前设置，防止闪烁
   (function () {
     const theme = localStorage.getItem('theme');
     if (theme === 'dark') {

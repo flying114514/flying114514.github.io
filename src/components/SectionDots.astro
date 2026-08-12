@@ -1,59 +1,35 @@
-<!--
-  右侧区块导航圆点，桌面端显示
--->
-<div
-  id="section-dots"
-  class="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-3"
->
-  <button data-section="hero" class="section-dot w-3 h-3 rounded-full bg-[var(--color-border)] hover:bg-[var(--color-accent)]/50 transition-all" title="首页"></button>
-  <button data-section="projects" class="section-dot w-3 h-3 rounded-full bg-[var(--color-border)] hover:bg-[var(--color-accent)]/50 transition-all" title="项目"></button>
-  <button data-section="experience" class="section-dot w-3 h-3 rounded-full bg-[var(--color-border)] hover:bg-[var(--color-accent)]/50 transition-all" title="经历"></button>
-  <button data-section="skills" class="section-dot w-3 h-3 rounded-full bg-[var(--color-border)] hover:bg-[var(--color-accent)]/50 transition-all" title="技能"></button>
-  <button data-section="contact" class="section-dot w-3 h-3 rounded-full bg-[var(--color-border)] hover:bg-[var(--color-accent)]/50 transition-all" title="联系"></button>
+<div id="section-dots" class="fixed right-5 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-2.5" aria-hidden="true">
+  <button data-section="hero" class="section-dot active" title="首页"></button>
+  <button data-section="projects" class="section-dot" title="项目"></button>
+  <button data-section="experience" class="section-dot" title="经历"></button>
+  <button data-section="skills" class="section-dot" title="技能"></button>
+  <button data-section="contact" class="section-dot" title="联系"></button>
 </div>
 
 <script>
-  const sections = ['hero', 'projects', 'experience', 'skills', 'contact'];
+  const ids = ['hero', 'projects', 'experience', 'skills', 'contact'];
   const dots = document.querySelectorAll('.section-dot');
 
-  function updateActiveDot() {
-    const scrollCenter = window.scrollY + window.innerHeight / 2;
-    let active = 'hero';
-
-    for (const id of sections) {
+  function highlight() {
+    const center = window.scrollY + window.innerHeight / 2;
+    let active = ids[0];
+    for (const id of ids) {
       const el = document.getElementById(id);
-      if (el && el.offsetTop <= scrollCenter) {
-        active = id;
-      }
+      if (el && el.offsetTop <= center) active = id;
     }
-
-    dots.forEach((dot) => {
-      const btn = dot as HTMLElement;
-      if (btn.dataset.section === active) {
-        btn.classList.add('active');
-        btn.classList.add('!bg-[var(--color-accent)]');
-        btn.classList.add('scale-125');
-        btn.classList.remove('bg-[var(--color-border)]');
-      } else {
-        btn.classList.remove('active');
-        btn.classList.remove('!bg-[var(--color-accent)]');
-        btn.classList.remove('scale-125');
-        btn.classList.add('bg-[var(--color-border)]');
-      }
+    dots.forEach((d) => {
+      const btn = d as HTMLElement;
+      btn.classList.toggle('active', btn.dataset.section === active);
     });
   }
 
-  window.addEventListener('scroll', updateActiveDot, { passive: true });
-  updateActiveDot();
+  window.addEventListener('scroll', highlight, { passive: true });
+  highlight();
 
-  // Click to scroll
-  dots.forEach((dot) => {
-    dot.addEventListener('click', () => {
-      const sectionId = (dot as HTMLElement).dataset.section;
-      const el = document.getElementById(sectionId || '');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
+  dots.forEach((d) => {
+    d.addEventListener('click', () => {
+      const el = document.getElementById((d as HTMLElement).dataset.section || '');
+      el?.scrollIntoView({ behavior: 'smooth' });
     });
   });
 </script>

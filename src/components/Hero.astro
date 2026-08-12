@@ -4,62 +4,47 @@ import { siteData } from '../data/content';
 
 <section
   id="hero"
-  class="relative min-h-screen flex items-center justify-center overflow-hidden"
+  class="relative min-h-screen flex items-center justify-center overflow-hidden px-6"
 >
-  <!-- 装饰背景 -->
-  <div class="absolute inset-0 pointer-events-none">
-    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-[var(--color-accent)]/5 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-teal-300/10 rounded-full blur-3xl"></div>
+  <!-- Ambient background -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute top-1/3 -left-32 w-[500px] h-[500px] bg-teal-200/20 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-1/4 -right-32 w-[400px] h-[400px] bg-teal-400/10 rounded-full blur-[100px]"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-100/10 rounded-full blur-[150px]"></div>
   </div>
 
-  <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
-    <!-- 欢迎语 -->
-    <p class="text-sm tracking-widest uppercase mb-4 text-[var(--color-text-muted)] animate-on-scroll visible">
-      Welcome
+  <div class="relative z-10 text-center max-w-2xl mx-auto reveal is-visible">
+    <p class="text-[13px] tracking-[0.2em] uppercase mb-5 text-[var(--text-tertiary)] font-medium">
+      Portfolio
     </p>
 
-    <!-- 主标题 -->
-    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
-      Hi, I'm <span class="text-[var(--color-accent)]">{siteData.name}</span>
+    <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-5 leading-[1.05]">
+      Hi, I&rsquo;m
+      <span class="text-[var(--accent)]">{siteData.name}</span>
     </h1>
-    <p class="text-lg md:text-xl text-[var(--color-text-muted)] mb-2 font-medium">
+
+    <p class="text-lg sm:text-xl text-[var(--text-secondary)] mb-3 font-medium">
       {siteData.tagline}
     </p>
-    <p class="text-sm text-[var(--color-text-muted)]/70 mb-8">
-      {siteData.school} · {siteData.major}
+    <p class="text-[15px] text-[var(--text-tertiary)] mb-10">
+      {siteData.school} &middot; {siteData.major}
     </p>
 
-    <!-- CTA 按钮 -->
-    <div class="flex items-center justify-center gap-4">
-      <a
-        href="#projects"
-        class="px-6 py-2.5 bg-[var(--color-accent)] text-white rounded-lg text-sm font-medium transition-all duration-200 hover:bg-[var(--color-accent-hover)] hover:shadow-lg hover:shadow-[var(--color-accent)]/25"
-      >
-        查看项目
-      </a>
-      <a
-        href="#contact"
-        class="px-6 py-2.5 border border-[var(--color-border)] rounded-lg text-sm font-medium transition-all duration-200 text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-accent)]/50 hover:bg-[var(--color-surface-hover)]"
-      >
-        联系我
-      </a>
+    <div class="flex items-center justify-center gap-3">
+      <a href="#projects" class="btn btn-primary">查看项目</a>
+      <a href="#contact" class="btn btn-secondary">联系我</a>
     </div>
   </div>
 
-  <!-- 底部滚动指示箭头 -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
     <svg
-      class="w-6 h-6 text-[var(--color-text-muted)]"
+      class="w-5 h-5 text-[var(--text-tertiary)] animate-bounce"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
     >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M19 14l-7 7m0 0l-7-7m7 7V3"
-      />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
     </svg>
   </div>
 </section>

@@ -4,45 +4,20 @@ import type { SkillCategory } from '../types';
 interface Props {
   skill: SkillCategory;
 }
-
 const { skill } = Astro.props;
 ---
 
-<div
-  class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm hover:border-[var(--color-accent)]/40 transition-all group card-3d"
-  data-skill-card
->
-  <!-- 分类标题 -->
-  <div class="flex items-center justify-between mb-4">
-    <h4 class="text-sm font-bold text-[var(--color-accent)]">{skill.name}</h4>
-    <span class="text-xs text-[var(--color-text-muted)]/60">{skill.nameEn}</span>
+<div class="card tilt-card p-5 group">
+  <div class="flex items-center justify-between mb-3">
+    <h4 class="text-[14px] font-semibold text-[var(--accent)]">{skill.name}</h4>
+    <span class="text-[11px] text-[var(--text-tertiary)] uppercase tracking-wide">{skill.nameEn}</span>
   </div>
-
-  <!-- 技术条目 -->
   <ul class="space-y-2">
     {skill.items.map((item) => (
-      <li class="text-sm text-[var(--color-text-muted)] flex items-center gap-2">
-        <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]/50 flex-shrink-0"></span>
+      <li class="flex items-center gap-2.5 text-[13px] text-[var(--text-secondary)]">
+        <span class="w-1 h-1 rounded-full bg-[var(--accent)]/40 flex-shrink-0"></span>
         {item}
       </li>
     ))}
   </ul>
 </div>
-
-<script>
-  // 3D hover effect
-  const card = document.querySelector('[data-skill-card]');
-  card?.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / centerY * -3;
-    const rotateY = (x - centerX) / centerX * 3;
-    (card as HTMLElement).style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-  });
-  card?.addEventListener('mouseleave', () => {
-    (card as HTMLElement).style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)';
-  });
-</script>

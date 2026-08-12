@@ -1,95 +1,96 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
 
-const sections = [
-  { id: 'hero', label: '首页', labelEn: 'Home' },
-  { id: 'projects', label: '项目', labelEn: 'Projects' },
-  { id: 'experience', label: '经历', labelEn: 'Experience' },
-  { id: 'skills', label: '技能', labelEn: 'Skills' },
-  { id: 'contact', label: '联系', labelEn: 'Contact' },
+const links = [
+  { id: 'hero', label: '首页' },
+  { id: 'projects', label: '项目' },
+  { id: 'experience', label: '经历' },
+  { id: 'skills', label: '技能' },
+  { id: 'contact', label: '联系' },
 ];
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-xl shadow-sm">
-  <div class="mx-auto max-w-5xl flex items-center justify-between px-6 h-16">
-    <!-- Logo / Name -->
-    <a href="#hero" class="text-lg font-bold tracking-tight text-[var(--color-accent)]">
-      Liu Hui
+<header class="fixed top-0 left-0 right-0 z-50">
+  <nav
+    class="mx-auto max-w-3xl flex items-center justify-between px-6 h-14 mt-3 rounded-2xl
+           bg-[var(--surface)]/70 backdrop-blur-xl border border-[var(--border-light)]
+           shadow-[var(--shadow-sm)]"
+    style="transition: background-color var(--duration-slow) var(--ease-out),
+                   border-color var(--duration-slow) var(--ease-out);"
+  >
+    <a
+      href="#hero"
+      class="text-[15px] font-semibold tracking-tight text-[var(--accent)] transition-transform duration-[var(--duration-fast)] hover:scale-105"
+    >
+      LH
     </a>
 
-    <!-- Desktop Nav + Theme Toggle -->
-    <div class="flex items-center gap-2">
-      <ul class="hidden md:flex items-center gap-1">
-        {sections.map((s) => (
+    <div class="flex items-center gap-1">
+      <ul class="hidden sm:flex items-center gap-0.5">
+        {links.map((l) => (
           <li>
             <a
-              href={`#${s.id}`}
-              class="nav-link px-3 py-1.5 rounded-md text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-all duration-200"
+              href={`#${l.id}`}
+              class="px-3 py-1.5 rounded-md text-[13px] font-medium text-[var(--text-tertiary)]
+                     hover:text-[var(--text)] hover:bg-[var(--surface-hover)]
+                     transition-colors duration-[var(--duration-fast)]"
             >
-              {s.label}
+              {l.label}
             </a>
           </li>
         ))}
       </ul>
-
-      <!-- Theme Toggle -->
+      <div class="w-px h-4 bg-[var(--border)] mx-1 hidden sm:block"></div>
       <ThemeToggle />
-
-      <!-- Mobile hamburger -->
+      <!-- Mobile menu button -->
       <button
-        id="mobile-menu-toggle"
-        class="md:hidden p-2 rounded-lg hover:bg-[var(--color-surface-hover)] transition-all duration-200 text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
-        title="菜单"
-        aria-label="打开菜单"
+        id="menu-btn"
+        class="sm:hidden p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors duration-[var(--duration-fast)] text-[var(--text-tertiary)]"
+        aria-label="菜单"
       >
-        <!-- Hamburger icon -->
-        <svg class="w-5 h-5 hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <svg id="icon-hamburger" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
-        <!-- Close icon -->
-        <svg class="w-5 h-5 close-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <svg id="icon-close" class="w-[18px] h-[18px] hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
-  </div>
+  </nav>
 
-  <!-- Mobile dropdown menu -->
-  <div id="mobile-menu" class="md:hidden hidden border-t border-[var(--color-border)] bg-[var(--color-bg)]/95 backdrop-blur-xl">
-    <ul class="px-6 py-3 space-y-1">
-      {sections.map((s) => (
-        <li>
-          <a
-            href={`#${s.id}`}
-            class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-all duration-200"
-          >
-            {s.label}
-          </a>
-        </li>
+  <!-- Mobile dropdown -->
+  <div id="mobile-menu" class="sm:hidden hidden mx-6 mt-2 rounded-xl bg-[var(--surface)] border border-[var(--border-light)] shadow-[var(--shadow-lg)] overflow-hidden">
+    <div class="py-2 px-2">
+      {links.map((l) => (
+        <a
+          href={`#${l.id}`}
+          class="mobile-link block px-3 py-2.5 rounded-lg text-[14px] font-medium text-[var(--text-secondary)] hover:text-[var(--text)] hover:bg-[var(--surface-hover)] transition-colors duration-[var(--duration-fast)]"
+        >
+          {l.label}
+        </a>
       ))}
-    </ul>
+    </div>
   </div>
-</nav>
+</header>
 
 <script>
-  // Mobile menu toggle
-  const toggle = document.getElementById('mobile-menu-toggle');
+  const menuBtn = document.getElementById('menu-btn');
   const menu = document.getElementById('mobile-menu');
-  const hamburger = document.querySelector('.hamburger-icon');
-  const closeIcon = document.querySelector('.close-icon');
+  const hamburger = document.getElementById('icon-hamburger')!;
+  const closeIcon = document.getElementById('icon-close')!;
 
-  toggle?.addEventListener('click', () => {
+  menuBtn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
     menu?.classList.toggle('hidden');
-    hamburger?.classList.toggle('hidden');
-    closeIcon?.classList.toggle('hidden');
+    hamburger.classList.toggle('hidden', !isOpen);
+    closeIcon.classList.toggle('hidden', isOpen);
   });
 
-  // Close menu on link click
-  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
-    link.addEventListener('click', () => {
+  document.querySelectorAll('.mobile-link').forEach((l) => {
+    l.addEventListener('click', () => {
       menu?.classList.add('hidden');
-      hamburger?.classList.remove('hidden');
-      closeIcon?.classList.add('hidden');
+      hamburger.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
     });
   });
 </script>

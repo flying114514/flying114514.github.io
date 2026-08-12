@@ -9,20 +9,19 @@ interface Props {
 const { experience, isLast = false } = Astro.props;
 ---
 
-<div class="relative pl-16">
-  <!-- 时间线节点 -->
-  <div class="absolute left-4 top-1 w-5 h-5 rounded-full border-2 border-[var(--color-accent)] bg-[var(--color-bg)] flex items-center justify-center text-xs">
-    {experience.icon}
+<div class="relative pl-14">
+  <!-- Node -->
+  <div class="absolute left-[11px] top-1.5 w-2.5 h-2.5 rounded-full bg-[var(--accent)] ring-4 ring-[var(--accent-subtle)]"></div>
+
+  <span class="text-[12px] font-mono text-[var(--accent)] tracking-wide font-medium">{experience.period}</span>
+
+  <div class="mt-1 mb-1.5">
+    <h3 class="text-lg font-bold inline">
+      {experience.company}
+    </h3>
+    <span class="text-[13px] text-[var(--text-tertiary)] ml-2 font-normal">{experience.companyEn}</span>
   </div>
 
-  <!-- 内容 -->
-  <span class="text-xs font-mono text-[var(--color-accent)] tracking-wider">{experience.period}</span>
-  <h3 class="text-xl font-semibold mt-1 mb-1">
-    {experience.company}
-    <span class="text-base font-normal text-[var(--color-text-muted)] ml-2">{experience.companyEn}</span>
-  </h3>
-  <p class="text-sm text-[var(--color-text-muted)] mb-2 font-medium">{experience.role}</p>
-  <p class="text-[var(--color-text-muted)] leading-relaxed text-sm">{experience.content}</p>
-
-  {!isLast && <div class="mt-8"></div>}
+  <p class="text-[14px] text-[var(--text-secondary)] font-medium mb-2">{experience.role}</p>
+  <p class="text-[14px] text-[var(--text-secondary)] leading-relaxed">{experience.content}</p>
 </div>

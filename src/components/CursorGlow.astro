@@ -1,14 +1,10 @@
-<!--
-  鼠标跟随光晕效果
--->
-<div id="cursor-glow" class="cursor-glow hidden md:block"></div>
-
+<div id="cursor-glow" class="cursor-glow hidden md:block" aria-hidden="true"></div>
 <script>
   const glow = document.getElementById('cursor-glow');
   if (glow) {
     document.addEventListener('mousemove', (e) => {
       glow.style.left = `${e.clientX}px`;
       glow.style.top = `${e.clientY}px`;
-    });
+    }, { passive: true });
   }
 </script>
