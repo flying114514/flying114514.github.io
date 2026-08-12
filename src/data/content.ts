@@ -150,10 +150,46 @@ export const siteData: SiteData = {
       icon: '🎓',
     },
     {
+      company: '沸点工作室',
+      companyEn: 'Boiling Point Studio',
+      role: '后端组成员',
+      roleEn: 'Backend Team Member',
+      period: '2025.06',
+      content:
+        '通过选拔加入华中农业大学校级技术组织——沸点工作室。开始系统学习 Java 后端技术栈（Spring Boot、MyBatis、MySQL），参与工作室内部项目开发，从零搭建第一个 Web 应用。这是从课堂到工程的转折点。',
+      contentEn:
+        'Joined Boiling Point Studio, a university-level tech organization at HZAU. Began systematic learning of Java backend stack (Spring Boot, MyBatis, MySQL), participated in internal project development, and built the first web application from scratch.',
+      icon: '💻',
+    },
+    {
+      company: '沸点工作室',
+      companyEn: 'Boiling Point Studio',
+      role: '后端副组长',
+      roleEn: 'Deputy Backend Lead',
+      period: '2025.09',
+      content:
+        '完成转正答辩，晋升为后端副组长。负责团队日常管理、新成员培训带教，组织 AI Agent 方向学习资料分享与技术研讨。期间主导工作室后端技术选型与代码规范制定，推动团队从单机开发向 Docker 容器化部署迁移。',
+      contentEn:
+        'Passed promotion review and became Deputy Backend Lead. Responsible for team management, newcomer mentoring, and organizing AI Agent learning sessions and tech talks. Led backend tech stack selection and coding standards, driving the team\'s migration to Docker-based deployment.',
+      icon: '👥',
+    },
+    {
+      company: '路线调整',
+      companyEn: 'Pivot',
+      role: '从传统后端全面转向 AI 应用开发',
+      roleEn: 'From Traditional Backend to AI Application Development',
+      period: '2026.02',
+      content:
+        '判断 AI Agent 是下一波技术浪潮，主动暂停 Java 传统后端技术学习，全面转向 AI 应用开发方向。半年内完成 LLM 工程化（RAG、Agent、Prompt Engineering）、Python 技术栈迁移、LangChain/SpringAI 框架实战，为后续 Neo 实习和两个 AI 项目的独立开发奠定基础。',
+      contentEn:
+        'Recognized AI Agents as the next technology wave and pivoted from traditional Java backend to AI application development. Within six months, mastered LLM engineering (RAG, Agent, Prompt Engineering), migrated to Python stack, and gained hands-on experience with LangChain/SpringAI — laying the groundwork for the Neo internship and two independent AI projects.',
+      icon: '🔀',
+    },
+    {
       company: '睿创微纳',
       companyEn: 'Raytron Microelectronics',
       role: '智能体开发部 · 智能体开发实习生',
-      roleEn: 'Agent Development Dept · Backend Developer Intern',
+      roleEn: 'Agent Development Dept · Agent Development Intern',
       period: '2026.07 - 至今',
       content:
         '负责 Neo 数字员工中 Git 代码交付节点的开发，涵盖项目与 Git 仓库的绑定与初始化、任务完成后的 Git 提交与推送、多 Commit 冲突处理与嵌套仓库拉取。这是 Neo 从"能写代码"到"能交付代码"的关键一环。',
@@ -212,6 +248,19 @@ export const siteData: SiteData = {
       icon: '🥈',
       title: '中国大学生计算机设计大赛',
       subtitle: '二等奖',
+    },
+  ],
+
+  articles: [
+    {
+      title: 'AI 时代，后端思维为什么反而更重要？',
+      description:
+        '从传统后端转 AI Agent 开发一年后的深度思考：Spring Cloud 的分布式思维模型（断路器、SAGA、网关、消息队列、配置中心）如何一一映射到 Agent 系统设计中，以及为什么"后端思维"在 AI 时代不但没过时，反而更值钱了。',
+      url: 'https://my.feishu.cn/docx/SxftdO40bo4gLZxQtnVcZhXjnfc',
+      platform: '飞书文档',
+      platformIcon: '📄',
+      tags: ['AI Agent', '后端思维', 'Spring Cloud', '分布式系统', '职业发展'],
+      date: '2026-08',
     },
   ],
 

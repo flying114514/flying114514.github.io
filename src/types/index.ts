@@ -72,6 +72,7 @@ export interface SiteData {
   experiences: Experience[];
   skills: SkillCategory[];
   awards: Award[];
+  articles: Article[];
   socials: SocialLink[];
   seo: {
     title: string;
