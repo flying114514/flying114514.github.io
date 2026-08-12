@@ -26,6 +26,20 @@ export const siteData: SiteData = {
 
   projects: [
     {
+      slug: 'api-proxy',
+      title: 'API 中转站',
+      titleEn: 'LLM API Proxy Gateway',
+      period: '2026.08',
+      tag: '独立运维',
+      linkUrl: 'https://api.nailongapi.online/',
+      summary:
+        '自建 LLM API 中转网关，统一代理多模型厂商接口（OpenAI / Anthropic / Google 等），提供标准化鉴权、计费统计与速率管控，降低多模型切换的接入成本。',
+      summaryEn:
+        'Self-hosted LLM API proxy gateway unifying multi-provider interfaces (OpenAI / Anthropic / Google) with standardized auth, billing, and rate limiting.',
+      techStack: ['Nginx', 'Node.js', 'Redis', 'Docker', 'HTTPS'],
+      highlights: [],
+    },
+    {
       slug: 'neo-digital-employee',
       title: 'Neo 数字员工',
       titleEn: 'Neo AI Digital Employee — Execution Layer',

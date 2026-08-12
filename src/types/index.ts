@@ -9,6 +9,7 @@ export interface Project {
   techStack: string[];
   highlights: Highlight[];
   githubUrl?: string;
+  linkUrl?: string;
 }
 
 export interface Highlight {
