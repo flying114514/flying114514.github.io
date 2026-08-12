@@ -31,6 +31,7 @@ export const siteData: SiteData = {
       titleEn: 'RAG-Powered Intelligent Interview Platform',
       period: '2025.09 - 2025.12',
       tag: '个人项目',
+      githubUrl: 'https://github.com/flying114514/rag-ui',
       summary:
         'AI面试全流程平台，覆盖简历分析、模拟面试、RAG问答、多模态评分，支持文字/视频双模面试，集成语音识别与 WebSocket 实时转写。',
       summaryEn:
@@ -70,6 +71,7 @@ export const siteData: SiteData = {
       titleEn: 'Text2SQL Conversational Data Analysis Copilot',
       period: '2026.04 - 2026.06',
       tag: '个人项目',
+      githubUrl: 'https://github.com/flying114514/text2sql',
       summary:
         '面向业务用户的自然语言数据分析 Copilot：提问即得答案+图表，SQL 可审计折叠。覆盖 Schema 检索、自纠错 Agent、数据治理、语义缓存、反馈飞轮全链路。',
       summaryEn:
@@ -137,7 +139,7 @@ export const siteData: SiteData = {
       id: 'databases',
       name: '数据库',
       nameEn: 'Databases',
-      items: ['MySQL', 'PostgreSQL', 'pgvector', 'ClickHouse', 'SQLite'],
+      items: ['MySQL', 'PostgreSQL', 'pgvector', 'Neo4j', 'SQLite'],
     },
     {
       id: 'ai-agent',
@@ -149,7 +151,7 @@ export const siteData: SiteData = {
       id: 'languages',
       name: '编程语言',
       nameEn: 'Languages',
-      items: ['Java 21', 'Python', 'SQL', 'Shell'],
+      items: ['Java 21', 'Python', 'SQL'],
     },
     {
       id: 'engineering',

@@ -11,11 +11,11 @@ const detailId = `detail-${project.slug}`;
 ---
 
 <article
-  class="card card-gradient group cursor-pointer"
+  class="card card-gradient group"
   style="transition-delay: ${index * 80}ms"
 >
-  <!-- Gradient header -->
-  <div class="relative h-28 bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-transparent flex items-end p-5">
+  <!-- Gradient header — clicks to GitHub -->
+  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="block relative h-28 bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-transparent flex items-end p-5 cursor-pointer">
     <div class="absolute top-3 right-3 opacity-8">
       <div class="w-16 h-16 rounded-full border border-white/20"></div>
       <div class="w-10 h-10 rounded-full border border-white/15 absolute top-3 right-3"></div>
@@ -25,10 +25,10 @@ const detailId = `detail-${project.slug}`;
         <span class="tag text-[11px]">{project.tag}</span>
         <span class="text-[11px] text-[var(--muted)] font-mono">{project.period}</span>
       </div>
-      <h3 class="text-lg font-medium tracking-tight">{project.title}</h3>
+      <h3 class="text-lg font-medium tracking-tight group-hover:opacity-80 transition-opacity">{project.title}</h3>
       <p class="text-[10px] text-[var(--muted)] font-mono uppercase tracking-wider mt-0.5">{project.titleEn}</p>
     </div>
-  </div>
+  </a>
 
   <div class="p-5 pt-3">
     <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-3">
@@ -41,16 +41,28 @@ const detailId = `detail-${project.slug}`;
       ))}
     </div>
 
-    <button
-      class="inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-      data-toggle={detailId}
-      aria-expanded="false"
-    >
-      <span class="toggle-label">Tech Highlights</span>
-      <svg class="w-3 h-3 toggle-chevron transition-transform duration-[var(--duration-normal)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-      </svg>
-    </button>
+    <div class="flex items-center justify-between">
+      <button
+        class="inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+        data-toggle={detailId}
+        aria-expanded="false"
+      >
+        <span class="toggle-label">Tech Highlights</span>
+        <svg class="w-3 h-3 toggle-chevron transition-transform duration-[var(--duration-normal)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      {project.githubUrl && (
+        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 text-[11px] font-mono text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+      )}
+    </div>
 
     <div class="detail-panel" id={detailId}>
       <div>

@@ -8,6 +8,7 @@ export interface Project {
   summaryEn: string;
   techStack: string[];
   highlights: Highlight[];
+  githubUrl?: string;
 }
 
 export interface Highlight {
