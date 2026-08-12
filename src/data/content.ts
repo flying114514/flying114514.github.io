@@ -11,7 +11,7 @@ export const siteData: SiteData = {
   majorEn: 'Information Management & Information Systems',
 
   intro: [
-    '你好！我是刘辉，华中农业大学信息管理与信息系统专业本科生，目前在睿创微纳智能体开发部担任后端开发实习生。',
+    '你好！我是刘辉，华中农业大学信息管理与信息系统专业本科生，目前在睿创微纳智能体开发部担任智能体开发实习生。',
     '我专注于后端系统架构与 AI Agent 开发。在项目实践中，我主导了 RAG 智能面试平台和 Text2SQL 数据分析 Copilot 的设计与落地，积累了从高并发架构到 LLM 工程化的全链路经验。',
     '技术栈方面，我熟练掌握 Spring Boot、Spring Cloud、Kafka、Redis 等后端技术，同时深入 RAG 检索增强、Agent 决策引擎、LLM 网关等 AI 工程化领域。',
     '我享受将复杂问题拆解为可落地的系统设计，热衷于性能优化和技术深度探索。',

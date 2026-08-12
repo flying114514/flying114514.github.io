@@ -32,9 +32,12 @@ const project = siteData.projects.find(p => p.slug === 'neo-digital-employee')!;
 
     <main class="mx-auto max-w-3xl px-6 pb-20 space-y-10">
       <section>
-        <h2 class="text-lg font-medium mb-3">项目概述</h2>
+        <h2 class="text-lg font-medium mb-3">概述</h2>
         <p class="text-[var(--muted-foreground)] leading-relaxed">
-          Neo 数字员工是一个 AI 驱动的任务编排与执行平台，用户通过自然语言描述需求，系统自动完成需求拆解→计划生成→任务派发→代码执行→Git 交付的全链路闭环。平台采用五层架构，我在实习期间负责<strong>执行层</strong>三个核心模块的设计与落地。
+          {project.summary}
+        </p>
+        <p class="text-[var(--muted-foreground)] leading-relaxed mt-3">
+          实习期间我负责执行层三个核心模块：<strong>红黄绿灯分级容错协议</strong>（借鉴断路器模型，让 Agent 在自主重试和人工介入之间做合理决策）、<strong>经验闭环学习机制</strong>（L1 即时反思 → L2 聚合分析 → L3 策略注入，让 Agent 越用越好）、<strong>技能包流水线</strong>（模板方法 + 策略模式 + YAML 声明式配置，让新能力以插件形式接入）。
         </p>
         <div class="flex flex-wrap gap-2 mt-4">
           {project.techStack.map(t => (
@@ -43,47 +46,12 @@ const project = siteData.projects.find(p => p.slug === 'neo-digital-employee')!;
         </div>
       </section>
 
-      <section>
-        <h2 class="text-lg font-medium mb-4">核心模块</h2>
-        <div class="space-y-3">
-          {[
-            {
-              color: 'green',
-              title: '红黄绿灯 · Agent 自主性分级协议',
-              desc: '借鉴 Spring Cloud 断路器三态模型，设计三级容错协议：绿灯（节点内重试）→ 黄灯（增量重规划，只重建受影响节点）→ 红灯（全局重建 + 人工介入）。调度层作为中间仲裁者，配合阈值防无限循环。',
-            },
-            {
-              color: 'blue',
-              title: '经验闭环 · L1→L2→L3 学习机制',
-              desc: 'L1：每次任务完成后驱动反思阶段，产出结构化执行报告写入记忆模块。L2：定期跨执行聚合分析发现规律。L3：技能加载时查询记忆，动态调整执行参数。关键边界——L1 反思不直接修改技能包，保证多部门共享稳定性。',
-            },
-            {
-              color: 'purple',
-              title: '技能包流水线 · 声明式插件架构',
-              desc: '模板方法 + 策略模式实现通用运行时框架，YAML 声明式定义 7 字段规范块。四级失败策略（重试→换路→循环优化→子Agent分解），补偿操作由技能包自行定义，加载时编译检查硬约束。',
-            },
-          ].map(({ color, title, desc }) => (
-            <div class="card p-4 flex items-start gap-3">
-              <span class={`flex-shrink-0 w-2 h-2 rounded-full mt-1.5 bg-${color}-500/60`}></span>
-              <div>
-                <h3 class="text-sm font-medium mb-1">{title}</h3>
-                <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">{desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section>
-        <h2 class="text-lg font-medium mb-3">个人收获</h2>
-        <div class="card p-4">
-          <ul class="list-disc list-inside text-sm text-[var(--muted-foreground)] space-y-2">
-            <li>Spring Cloud 分布式设计模式（断路器、SAGA、网关）在 Agent 系统中找到了完美的映射场景</li>
-            <li>大型 monorepo 中做增量模块设计，在现有架构约束下推动改进</li>
-            <li>Agent 的核心壁垒不是 LLM，而是围绕 LLM 构建的调度、容错、学习等工程基础设施</li>
-          </ul>
-        </div>
-      </section>
+      {project.highlights.map((h) => (
+        <section>
+          <h2 class="text-lg font-medium mb-2">{h.title}</h2>
+          <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{h.content}</p>
+        </section>
+      ))}
 
       <footer class="pt-8 text-center">
         <a href="/" class="inline-flex items-center gap-1.5 text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors font-mono">
@@ -109,7 +77,4 @@ const project = siteData.projects.find(p => p.slug === 'neo-digital-employee')!;
     color: var(--muted);
     border: 1px solid var(--border);
   }
-  .bg-green-500\/60 { background: rgba(34,197,94,0.6); }
-  .bg-blue-500\/60 { background: rgba(59,130,246,0.6); }
-  .bg-purple-500\/60 { background: rgba(168,85,247,0.6); }
 </style>
