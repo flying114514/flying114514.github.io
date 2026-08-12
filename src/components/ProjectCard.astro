@@ -14,21 +14,38 @@ const detailId = `detail-${project.slug}`;
   class="card card-gradient group"
   style="transition-delay: ${index * 80}ms"
 >
-  <!-- Gradient header — clicks to GitHub -->
-  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="block relative h-28 bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-transparent flex items-end p-5 cursor-pointer">
-    <div class="absolute top-3 right-3 opacity-8">
-      <div class="w-16 h-16 rounded-full border border-white/20"></div>
-      <div class="w-10 h-10 rounded-full border border-white/15 absolute top-3 right-3"></div>
-    </div>
-    <div>
-      <div class="flex items-center gap-2 mb-1.5">
-        <span class="tag text-[11px]">{project.tag}</span>
-        <span class="text-[11px] text-[var(--muted)] font-mono">{project.period}</span>
+  <!-- Gradient header -->
+  {project.githubUrl ? (
+    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="block relative h-28 bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-transparent flex items-end p-5 cursor-pointer group/link">
+      <div class="absolute top-3 right-3 opacity-8">
+        <div class="w-16 h-16 rounded-full border border-white/20"></div>
+        <div class="w-10 h-10 rounded-full border border-white/15 absolute top-3 right-3"></div>
       </div>
-      <h3 class="text-lg font-medium tracking-tight group-hover:opacity-80 transition-opacity">{project.title}</h3>
-      <p class="text-[10px] text-[var(--muted)] font-mono uppercase tracking-wider mt-0.5">{project.titleEn}</p>
+      <div>
+        <div class="flex items-center gap-2 mb-1.5">
+          <span class="tag text-[11px]">{project.tag}</span>
+          <span class="text-[11px] text-[var(--muted)] font-mono">{project.period}</span>
+        </div>
+        <h3 class="text-lg font-medium tracking-tight group-hover/link:opacity-80 transition-opacity">{project.title}</h3>
+        <p class="text-[10px] text-[var(--muted)] font-mono uppercase tracking-wider mt-0.5">{project.titleEn}</p>
+      </div>
+    </a>
+  ) : (
+    <div class="relative h-28 bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-transparent flex items-end p-5">
+      <div class="absolute top-3 right-3 opacity-8">
+        <div class="w-16 h-16 rounded-full border border-white/20"></div>
+        <div class="w-10 h-10 rounded-full border border-white/15 absolute top-3 right-3"></div>
+      </div>
+      <div>
+        <div class="flex items-center gap-2 mb-1.5">
+          <span class="tag text-[11px]">{project.tag}</span>
+          <span class="text-[11px] text-[var(--muted)] font-mono">{project.period}</span>
+        </div>
+        <h3 class="text-lg font-medium tracking-tight">{project.title}</h3>
+        <p class="text-[10px] text-[var(--muted)] font-mono uppercase tracking-wider mt-0.5">{project.titleEn}</p>
+      </div>
     </div>
-  </a>
+  )}
 
   <div class="p-5 pt-3">
     <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-3">
@@ -42,16 +59,20 @@ const detailId = `detail-${project.slug}`;
     </div>
 
     <div class="flex items-center justify-between">
-      <button
-        class="inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-        data-toggle={detailId}
-        aria-expanded="false"
-      >
-        <span class="toggle-label">Tech Highlights</span>
-        <svg class="w-3 h-3 toggle-chevron transition-transform duration-[var(--duration-normal)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
+      {project.highlights.length > 0 ? (
+        <button
+          class="inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+          data-toggle={detailId}
+          aria-expanded="false"
+        >
+          <span class="toggle-label">Tech Highlights</span>
+          <svg class="w-3 h-3 toggle-chevron transition-transform duration-[var(--duration-normal)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      ) : (
+        <span></span>
+      )}
 
       {project.githubUrl && (
         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
@@ -64,21 +85,23 @@ const detailId = `detail-${project.slug}`;
       )}
     </div>
 
-    <div class="detail-panel" id={detailId}>
-      <div>
-        <div class="mt-4 pt-4 border-t border-[var(--border)] space-y-3">
-          {project.highlights.map((h) => (
-            <div class="flex items-start gap-2.5">
-              <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[var(--muted)] mt-1.5"></span>
-              <div>
-                <h4 class="text-sm font-medium mb-0.5">{h.title}</h4>
-                <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">{h.content}</p>
+    {project.highlights.length > 0 && (
+      <div class="detail-panel" id={detailId}>
+        <div>
+          <div class="mt-4 pt-4 border-t border-[var(--border)] space-y-3">
+            {project.highlights.map((h) => (
+              <div class="flex items-start gap-2.5">
+                <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[var(--muted)] mt-1.5"></span>
+                <div>
+                  <h4 class="text-sm font-medium mb-0.5">{h.title}</h4>
+                  <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">{h.content}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    )}
   </div>
 </article>
 

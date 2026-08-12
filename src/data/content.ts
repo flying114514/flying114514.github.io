@@ -26,6 +26,19 @@ export const siteData: SiteData = {
 
   projects: [
     {
+      slug: 'neo-digital-employee',
+      title: 'Neo 数字员工',
+      titleEn: 'Neo AI Digital Employee — Execution Layer',
+      period: '2026.07 - 至今',
+      tag: '实习项目',
+      summary:
+        'AI驱动任务编排与执行平台（17万行 TypeScript monorepo）。负责执行层三个核心模块：① 红黄绿灯三级Agent自主性分级协议（绿灯自理→黄灯增量重规划→红灯全局重建+人工介入）；② L1→L2→L3经验闭环机制（单次执行反思→跨任务聚合→技能加载时调优）；③ YAML声明式技能包流水线（通用运行时+可插拔技能包，7字段块规范，四级失败策略+补偿操作体系）。',
+      summaryEn:
+        'AI-driven task orchestration & execution platform (170K LoC TypeScript monorepo). Led three execution-layer modules: ① Red/Yellow/Green three-tier agent autonomy protocol; ② L1→L2→L3 experience feedback loop; ③ YAML-declarative skill package pipeline with pluggable architecture.',
+      techStack: ['TypeScript', 'Node.js', 'Express', 'Python', 'SQLite', 'PostgreSQL', 'Docker'],
+      highlights: [],
+    },
+    {
       slug: 'rag-interview',
       title: 'RAG 智能面试平台',
       titleEn: 'RAG-Powered Intelligent Interview Platform',
@@ -108,6 +121,18 @@ export const siteData: SiteData = {
   ],
 
   experiences: [
+    {
+      company: '华中农业大学',
+      companyEn: 'Huazhong Agricultural University',
+      role: '信息管理与信息系统 · 本科',
+      roleEn: 'Information Management & Information Systems · B.S.',
+      period: '2024.09 - 2028.06',
+      content:
+        '国家"211工程"、"双一流"建设高校。主修课程包括数据结构、操作系统、计算机网络、数据库系统、信息系统分析与设计等。在校期间参与数学建模与计算机设计竞赛并获奖。',
+      contentEn:
+        'National "211 Project" and "Double First-Class" university. Major coursework includes Data Structures, Operating Systems, Computer Networks, Database Systems, and Information Systems Analysis & Design. Participated in mathematical modeling and computer design competitions.',
+      icon: '🎓',
+    },
     {
       company: '睿创微纳',
       companyEn: 'Raytron Microelectronics',
