@@ -2,45 +2,32 @@
 import ThemeToggle from './ThemeToggle.astro';
 
 const links = [
-  { id: 'hero', label: 'Home', cn: '首页' },
-  { id: 'projects', label: 'Projects', cn: '项目' },
-  { id: 'experience', label: 'Experience', cn: '经历' },
-  { id: 'skills', label: 'Skills', cn: '技能' },
-  { id: 'contact', label: 'Contact', cn: '联系' },
+  { id: 'hero', label: 'Home' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'contact', label: 'Contact' },
 ];
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50">
-  <div class="mx-auto max-w-6xl flex items-center justify-between px-6 lg:px-8 h-16">
+<header class="fixed top-0 left-0 right-0 z-50 bg-[var(--background)]/80 backdrop-blur-xl border-b border-[var(--border)]">
+  <div class="mx-auto max-w-6xl flex items-center justify-between px-6 h-14">
     <!-- Logo -->
-    <a
-      href="#hero"
-      class="font-mono text-sm font-medium tracking-tight text-[var(--text)] opacity-80 hover:opacity-100 transition-opacity duration-[var(--duration-fast)]"
-    >
+    <a href="#hero" class="font-mono text-sm font-medium tracking-tight text-[var(--foreground)] opacity-70 hover:opacity-100 transition-opacity">
       LH
     </a>
 
     <!-- Desktop nav -->
     <nav class="hidden md:flex items-center gap-8">
       {links.map((l) => (
-        <a
-          href={`#${l.id}`}
-          class="nav-link-style"
-        >
-          {l.label}
-        </a>
+        <a href={`#${l.id}`} class="nav-link">{l.label}</a>
       ))}
     </nav>
 
-    <!-- Right group -->
-    <div class="flex items-center gap-4">
+    <!-- Right -->
+    <div class="flex items-center gap-3">
       <ThemeToggle />
-      <!-- Mobile menu button -->
-      <button
-        id="menu-btn"
-        class="md:hidden flex flex-col gap-1.5 p-2 -mr-2"
-        aria-label="菜单"
-      >
+      <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 -mr-1" aria-label="Menu">
         <span id="bar1" class="menu-bar"></span>
         <span id="bar2" class="menu-bar"></span>
         <span id="bar3" class="menu-bar"></span>
@@ -48,16 +35,12 @@ const links = [
     </div>
   </div>
 
-  <!-- Mobile dropdown -->
-  <div id="mobile-menu" class="md:hidden hidden mx-6 mt-1 rounded-xl bg-[var(--surface)] border border-[var(--border)] shadow-[var(--shadow-xl)] overflow-hidden backdrop-blur-xl">
-    <div class="py-3 px-3 flex flex-col gap-1">
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden mx-4 mb-2 rounded-xl bg-[var(--background-secondary)] border border-[var(--border)] overflow-hidden">
+    <div class="py-2 px-2 flex flex-col">
       {links.map((l) => (
-        <a
-          href={`#${l.id}`}
-          class="mobile-link flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text)] hover:bg-[var(--surface-hover)] transition-colors duration-[var(--duration-fast)]"
-        >
-          <span>{l.label}</span>
-          <span class="text-xs text-[var(--text-tertiary)]">{l.cn}</span>
+        <a href={`#${l.id}`} class="mobile-link block px-3 py-2.5 rounded-lg text-sm text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-white/5 transition-colors">
+          {l.label}
         </a>
       ))}
     </div>
@@ -70,24 +53,17 @@ const links = [
   const bar1 = document.getElementById('bar1')!;
   const bar2 = document.getElementById('bar2')!;
   const bar3 = document.getElementById('bar3')!;
-
   let open = false;
+
   menuBtn?.addEventListener('click', () => {
     open = !open;
     menu?.classList.toggle('hidden', !open);
-
-    if (open) {
-      bar1.style.transform = 'translate(3px, -1px) rotate(45deg)';
-      bar2.style.opacity = '0';
-      bar3.style.transform = 'translate(3px, 1px) rotate(-45deg)';
-    } else {
-      bar1.style.transform = 'none';
-      bar2.style.opacity = '1';
-      bar3.style.transform = 'none';
-    }
+    bar1.style.transform = open ? 'translate(3px, -1px) rotate(45deg)' : 'none';
+    bar2.style.opacity = open ? '0' : '1';
+    bar3.style.transform = open ? 'translate(3px, 1px) rotate(-45deg)' : 'none';
   });
 
-  document.querySelectorAll('.mobile-link').forEach((l) => {
+  document.querySelectorAll('.mobile-link').forEach(l => {
     l.addEventListener('click', () => {
       open = false;
       menu?.classList.add('hidden');

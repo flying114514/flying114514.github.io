@@ -3,20 +3,19 @@ import { siteData } from '../data/content';
 import ProjectCard from './ProjectCard.astro';
 ---
 
-<section id="projects" class="section px-6">
+<section id="projects" class="py-16 sm:py-20 px-6 bg-[var(--background-secondary)]">
   <div class="mx-auto max-w-6xl">
-    <!-- Section heading — Origin style -->
-    <div class="text-center mb-20 reveal">
+    <div class="text-center mb-12 reveal">
       <div class="section-label">Projects</div>
-      <h2 class="large-heading mb-5">
+      <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-light tracking-[-0.03em] leading-[1.1] mb-4">
         <em class="text-italics">What</em> I&rsquo;ve built
       </h2>
-      <p class="p-60 max-w-lg mx-auto">
-        AI Agent 决策、RAG 检索增强、LLM 工程化与高并发架构的实践项目。
+      <p class="text-xs text-[var(--muted)] font-mono uppercase tracking-wider">
+        AI Agent · RAG · LLM Engineering · High-Concurrency
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 reveal-stagger">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 reveal-stagger">
       {siteData.projects.map((p, i) => (
         <ProjectCard project={p} index={i} />
       ))}

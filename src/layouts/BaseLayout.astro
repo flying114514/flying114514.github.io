@@ -8,12 +8,7 @@ interface Props {
   author?: string;
 }
 
-const {
-  title,
-  description,
-  keywords = '',
-  author = '刘辉',
-} = Astro.props;
+const { title, description, keywords = '', author = '刘辉' } = Astro.props;
 ---
 
 <!doctype html>
@@ -40,7 +35,7 @@ const {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
 
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#080808" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -49,7 +44,7 @@ const {
       rel="stylesheet"
     />
   </head>
-  <body class="min-h-screen flex flex-col font-body">
+  <body class="min-h-screen flex flex-col">
     <slot />
   </body>
 </html>
@@ -59,8 +54,6 @@ const {
     const theme = localStorage.getItem('theme');
     if (theme === 'light') {
       document.documentElement.setAttribute('data-theme', 'light');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'dark');
     }
   })();
 </script>

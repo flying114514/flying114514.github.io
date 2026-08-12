@@ -2,16 +2,15 @@
 import { siteData } from '../data/content';
 ---
 
-<section id="about" class="section px-6">
-  <div class="mx-auto max-w-3xl text-center">
+<section id="about" class="py-16 sm:py-20 px-6">
+  <div class="mx-auto max-w-2xl text-center">
     <div class="section-label reveal">About</div>
-    <h2 class="reveal large-heading mb-10">
+    <h2 class="reveal text-[clamp(2rem,5vw,3.5rem)] font-light tracking-[-0.03em] leading-[1.1] mb-8">
       <em class="text-italics">Who</em> I am
     </h2>
-
-    <div class="reveal-stagger space-y-5">
+    <div class="reveal-stagger space-y-4">
       {siteData.intro.map((p) => (
-        <p class="p-60 text-[var(--text)] max-w-2xl mx-auto text-lg leading-relaxed">
+        <p class="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed max-w-xl mx-auto">
           {p}
         </p>
       ))}

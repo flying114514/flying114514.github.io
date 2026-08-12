@@ -6,22 +6,19 @@ interface Props {
   isLast?: boolean;
 }
 
-const { experience, isLast = false } = Astro.props;
+const { experience } = Astro.props;
 ---
 
 <div class="relative pl-10 sm:pl-12">
-  <!-- Dot -->
-  <div class="timeline-dot absolute left-0 top-1.5"></div>
+  <div class="timeline-dot"></div>
 
-  <span class="text-xs font-mono uppercase tracking-widest text-[var(--text-tertiary)]">{experience.period}</span>
+  <span class="text-[11px] font-mono uppercase tracking-widest text-[var(--muted)]">{experience.period}</span>
 
-  <div class="mt-2 mb-1.5 flex items-center gap-2 flex-wrap">
-    <h3 class="text-xl font-medium">
-      {experience.company}
-    </h3>
-    <span class="text-xs text-[var(--text-tertiary)] font-mono">{experience.companyEn}</span>
+  <div class="mt-2 mb-1 flex items-center gap-2 flex-wrap">
+    <h3 class="text-xl font-medium">{experience.company}</h3>
+    <span class="text-[11px] text-[var(--muted)] font-mono">{experience.companyEn}</span>
   </div>
 
-  <p class="text-sm font-medium text-[var(--text)] mb-2">{experience.role}</p>
-  <p class="p-60">{experience.content}</p>
+  <p class="text-sm font-medium mb-2">{experience.role}</p>
+  <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">{experience.content}</p>
 </div>

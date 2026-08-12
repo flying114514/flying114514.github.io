@@ -1,21 +1,19 @@
 ---
 import type { SkillCategory } from '../types';
 
-interface Props {
-  skill: SkillCategory;
-}
+interface Props { skill: SkillCategory; }
 const { skill } = Astro.props;
 ---
 
-<div class="track-card group p-6">
+<div class="card group p-5">
   <div class="flex items-center justify-between mb-4">
-    <h4 class="text-sm font-medium text-[var(--text)]">{skill.name}</h4>
-    <span class="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">{skill.nameEn}</span>
+    <h4 class="text-sm font-medium">{skill.name}</h4>
+    <span class="text-[10px] font-mono uppercase tracking-wider text-[var(--muted)]">{skill.nameEn}</span>
   </div>
   <ul class="space-y-2.5">
     {skill.items.map((item) => (
-      <li class="flex items-center gap-2.5 text-sm text-[var(--text-secondary)]">
-        <span class="w-1 h-1 rounded-full bg-[var(--text-tertiary)] flex-shrink-0"></span>
+      <li class="flex items-center gap-2.5 text-sm text-[var(--muted-foreground)]">
+        <span class="w-1 h-1 rounded-full bg-[var(--muted)] flex-shrink-0"></span>
         {item}
       </li>
     ))}

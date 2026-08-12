@@ -11,44 +11,38 @@ const detailId = `detail-${project.slug}`;
 ---
 
 <article
-  class="track-card group cursor-pointer"
+  class="card card-gradient group cursor-pointer"
   style="transition-delay: ${index * 80}ms"
 >
-  <!-- Gradient header area -->
-  <div class="relative h-40 bg-gradient-to-br from-white/[0.06] to-white/[0.01] flex items-end p-6">
-    <!-- Abstract decoration -->
-    <div class="absolute top-4 right-4 opacity-20">
-      <div class="w-20 h-20 rounded-full border border-white/20"></div>
-      <div class="w-12 h-12 rounded-full border border-white/10 absolute top-4 right-4"></div>
+  <!-- Gradient header -->
+  <div class="relative h-28 bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-transparent flex items-end p-5">
+    <div class="absolute top-3 right-3 opacity-8">
+      <div class="w-16 h-16 rounded-full border border-white/20"></div>
+      <div class="w-10 h-10 rounded-full border border-white/15 absolute top-3 right-3"></div>
     </div>
     <div>
-      <div class="flex items-center gap-3 mb-2">
-        <span class="tag">{project.tag}</span>
-        <span class="text-xs text-[var(--text-tertiary)] font-mono">{project.period}</span>
+      <div class="flex items-center gap-2 mb-1.5">
+        <span class="tag text-[11px]">{project.tag}</span>
+        <span class="text-[11px] text-[var(--muted)] font-mono">{project.period}</span>
       </div>
-      <h3 class="text-xl font-medium tracking-tight group-hover:opacity-80 transition-opacity">
-        {project.title}
-      </h3>
-      <p class="text-xs text-[var(--text-tertiary)] font-mono uppercase tracking-wider mt-0.5">{project.titleEn}</p>
+      <h3 class="text-lg font-medium tracking-tight">{project.title}</h3>
+      <p class="text-[10px] text-[var(--muted)] font-mono uppercase tracking-wider mt-0.5">{project.titleEn}</p>
     </div>
   </div>
 
-  <!-- Content -->
-  <div class="p-6 pt-4">
-    <p class="p-60 mb-4">
+  <div class="p-5 pt-3">
+    <p class="text-sm text-[var(--muted-foreground)] leading-relaxed mb-3">
       {project.summary}
     </p>
 
-    <!-- Tech tags -->
-    <div class="flex flex-wrap gap-1.5 mb-5">
+    <div class="flex flex-wrap gap-1.5 mb-4">
       {project.techStack.map((t) => (
-        <span class="tag">{t}</span>
+        <span class="tag text-[11px]">{t}</span>
       ))}
     </div>
 
-    <!-- Expand toggle -->
     <button
-      class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--text-secondary)] hover:text-[var(--text)] transition-colors duration-[var(--duration-fast)]"
+      class="inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
       data-toggle={detailId}
       aria-expanded="false"
     >
@@ -58,16 +52,15 @@ const detailId = `detail-${project.slug}`;
       </svg>
     </button>
 
-    <!-- Expandable detail -->
     <div class="detail-panel" id={detailId}>
       <div>
-        <div class="mt-5 pt-5 border-t border-[var(--divider)] space-y-4">
+        <div class="mt-4 pt-4 border-t border-[var(--border)] space-y-3">
           {project.highlights.map((h) => (
-            <div class="flex items-start gap-3">
-              <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[var(--text-tertiary)] mt-2"></span>
+            <div class="flex items-start gap-2.5">
+              <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[var(--muted)] mt-1.5"></span>
               <div>
-                <h4 class="text-sm font-medium mb-1">{h.title}</h4>
-                <p class="text-sm text-[var(--text-secondary)] leading-relaxed">{h.content}</p>
+                <h4 class="text-sm font-medium mb-0.5">{h.title}</h4>
+                <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">{h.content}</p>
               </div>
             </div>
           ))}
@@ -88,9 +81,8 @@ const detailId = `detail-${project.slug}`;
     e.preventDefault();
     e.stopPropagation();
     const isOpen = panel?.classList.toggle('open');
-    const expanded = isOpen ? 'true' : 'false';
-    toggleBtn.setAttribute('aria-expanded', expanded);
+    toggleBtn.setAttribute('aria-expanded', String(isOpen));
     if (chevron) chevron.style.transform = isOpen ? 'rotate(180deg)' : '';
-    if (label) label.textContent = isOpen ? '收起' : 'Tech Highlights';
+    if (label) label.textContent = isOpen ? 'Collapse' : 'Tech Highlights';
   });
 </script>
