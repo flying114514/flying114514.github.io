@@ -200,6 +200,18 @@ export const siteData: SiteData = {
       icon: '🔀',
     },
     {
+      company: 'API 中转站',
+      companyEn: 'API Proxy',
+      role: '从校园大使到自建平台',
+      roleEn: 'From Campus Ambassador to Self-Built Platform',
+      period: '2026.06',
+      content:
+        '先成为 CamelAPI 中转站校园大使，在推广过程中洞察到国内开发者调用海外 LLM API 的痛点——网络不稳定、支付门槛高、多模型切换成本大。于是自建 API 中转网关（api.nailongapi.online），统一代理 OpenAI / Anthropic / Google 等多厂商接口，提供标准化鉴权与速率管控。上线后用户量破百，验证了"技术套利"从想法到落地的完整闭环。',
+      contentEn:
+        'Became a campus ambassador for CamelAPI, then identified pain points in domestic devs accessing overseas LLM APIs — network instability, payment friction, high switching cost. Built a self-hosted API proxy gateway unifying multi-provider interfaces with standardized auth and rate limiting. Surpassed 100 users post-launch, validating the full loop from "tech arbitrage" idea to real product.',
+      icon: '🔌',
+    },
+    {
       company: '睿创微纳',
       companyEn: 'Raytron Microelectronics',
       role: '智能体开发部 · 智能体开发实习生',

@@ -14,6 +14,7 @@ const hasLink = project.githubUrl || project.linkUrl;
 <article
   class="card card-gradient group"
   style="transition-delay: ${index * 80}ms"
+  data-project={project.slug}
 >
   <!-- Gradient header -->
   {hasLink ? (
@@ -117,7 +118,7 @@ const hasLink = project.githubUrl || project.linkUrl;
 </article>
 
 <script>
-  const article = document.currentScript?.parentElement;
+  const article = document.querySelector(`[data-project="${project.slug}"]`) as HTMLElement;
   const toggleBtn = article?.querySelector(`[data-toggle="${detailId}"]`) as HTMLElement;
   const panel = document.getElementById(detailId);
   const chevron = toggleBtn?.querySelector('.toggle-chevron') as HTMLElement;
