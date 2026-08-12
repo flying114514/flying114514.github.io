@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Layout from '../components/Layout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Projects from '../components/Projects.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
+import Awards from '../components/Awards.astro';
+import Contact from '../components/Contact.astro';
+import ScrollProgress from '../components/ScrollProgress.astro';
+import SectionDots from '../components/SectionDots.astro';
+import CursorGlow from '../components/CursorGlow.astro';
+import { siteData } from '../data/content';
+---
+
+<BaseLayout
+  title={siteData.seo.title}
+  description={siteData.seo.description}
+  keywords={siteData.seo.keywords}
+  author={siteData.seo.author}
+>
+  <Layout>
+    <ScrollProgress />
+    <SectionDots />
+    <CursorGlow />
+
+    <Hero />
+    <About />
+    <Projects />
+    <Experience />
+    <Skills />
+    <Awards />
+    <Contact />
+  </Layout>
+</BaseLayout>

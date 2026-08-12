@@ -1,0 +1,30 @@
+<!--
+  滚动触发入场动画包装器
+  用法：<AnimateOnScroll delay={0}>...</AnimateOnScroll>
+-->
+<div class="animate-on-scroll animate-delay-{delay}" data-animate>
+  <slot />
+</div>
+
+<script>
+  const delay = Astro.props.delay ?? 0;
+</script>
+
+<script>
+  // Intersection Observer for scroll-triggered animations
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+  );
+
+  document.querySelectorAll('[data-animate]').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

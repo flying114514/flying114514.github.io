@@ -1,0 +1,18 @@
+<!--
+  滚动进度条：固定在页面顶部，根据滚动位置水平缩放
+-->
+<div id="scroll-progress" class="fixed top-0 left-0 right-0 h-0.5 bg-[var(--color-accent)]/50 z-[60] origin-left scale-x-0"></div>
+
+<script>
+  const bar = document.getElementById('scroll-progress');
+  function updateProgress() {
+    const scrollY = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = total > 0 ? scrollY / total : 0;
+    if (bar) {
+      bar.style.transform = `scaleX(${progress})`;
+    }
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+</script>

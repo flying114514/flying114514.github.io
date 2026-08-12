@@ -1,0 +1,31 @@
+---
+import { siteData } from '../data/content';
+import TimelineItem from './TimelineItem.astro';
+---
+
+<section id="experience" class="py-24 px-6 relative">
+  <!-- 装饰背景 -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-1/4 right-0 w-1/3 h-1/2 bg-blue-500/5 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="mx-auto max-w-3xl relative z-10">
+    <!-- Section Title -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-2">实习经历</h2>
+      <p class="text-sm text-[var(--color-text-muted)] tracking-widest uppercase">Experience</p>
+    </div>
+
+    <!-- 时间线 -->
+    <div class="relative">
+      <!-- 竖线 -->
+      <div class="absolute left-6 top-0 bottom-0 w-px bg-[var(--color-border)]"></div>
+
+      <div class="space-y-12">
+        {siteData.experiences.map((exp, i) => (
+          <TimelineItem experience={exp} isLast={i === siteData.experiences.length - 1} />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
