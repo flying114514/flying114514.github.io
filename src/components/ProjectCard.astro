@@ -9,6 +9,8 @@ interface Props {
 const { project, index } = Astro.props;
 const detailId = `detail-${project.slug}`;
 const hasLink = project.githubUrl || project.linkUrl;
+const linkHref = project.githubUrl || project.linkUrl || '';
+const isExternal = linkHref.startsWith('http');
 ---
 
 <article
@@ -18,7 +20,7 @@ const hasLink = project.githubUrl || project.linkUrl;
 >
   <!-- Gradient header -->
   {hasLink ? (
-    <a href={project.githubUrl || project.linkUrl} target="_blank" rel="noopener noreferrer" class="block relative h-28 bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-transparent flex items-end p-5 cursor-pointer group/link">
+    <a href={linkHref} {...isExternal ? {target: '_blank', rel: 'noopener noreferrer'} : {}} class="block relative h-28 bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-transparent flex items-end p-5 cursor-pointer group/link">
       <div class="absolute top-3 right-3 opacity-8">
         <div class="w-16 h-16 rounded-full border border-white/20"></div>
         <div class="w-10 h-10 rounded-full border border-white/15 absolute top-3 right-3"></div>
@@ -86,7 +88,7 @@ const hasLink = project.githubUrl || project.linkUrl;
         </a>
       )}
 
-      {project.linkUrl && !project.githubUrl && (
+      {project.linkUrl && !project.githubUrl && isExternal && (
         <a href={project.linkUrl} target="_blank" rel="noopener noreferrer"
           class="inline-flex items-center gap-1.5 text-[11px] font-mono text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

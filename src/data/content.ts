@@ -45,6 +45,7 @@ export const siteData: SiteData = {
       titleEn: 'Neo AI Digital Employee — Execution Layer',
       period: '2026.07 - 至今',
       tag: '实习项目',
+      linkUrl: '/projects/neo',
       summary:
         'AI驱动任务编排与执行平台（17万行 TypeScript monorepo，五层架构：网关→调度→策划→执行→支持）。负责执行层三个核心模块设计。',
       summaryEn:

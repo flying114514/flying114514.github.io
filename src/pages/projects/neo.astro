@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteData } from '../../data/content';
+
+const project = siteData.projects.find(p => p.slug === 'neo-digital-employee')!;
+---
+
+<BaseLayout
+  title={`${project.title} | 刘辉`}
+  description={project.summary}
+>
+  <div class="min-h-screen">
+    <!-- Back -->
+    <div class="mx-auto max-w-3xl px-6 pt-8">
+      <a href="/" class="inline-flex items-center gap-1.5 text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors font-mono">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m0 0l7 7m-7-7l7-7"/>
+        </svg>
+        返回首页
+      </a>
+    </div>
+
+    <!-- Header -->
+    <header class="mx-auto max-w-3xl px-6 pt-12 pb-8">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="tag text-xs">{project.tag}</span>
+        <span class="text-xs text-[var(--muted)] font-mono">{project.period}</span>
+      </div>
+      <h1 class="text-[clamp(2rem,5vw,3rem)] font-light tracking-[-0.03em] leading-[1.15] mb-2">
+        {project.title}
+      </h1>
+      <p class="text-sm text-[var(--muted)] font-mono uppercase tracking-wider">{project.titleEn}</p>
+    </header>
+
+    <!-- Content -->
+    <main class="mx-auto max-w-3xl px-6 pb-20 space-y-12">
+      <!-- Overview -->
+      <section>
+        <h2 class="text-lg font-medium mb-3">项目概述</h2>
+        <p class="text-[var(--muted-foreground)] leading-relaxed">
+          Neo 数字员工是一个 AI 驱动的任务编排与执行平台，用户通过自然语言描述需求，系统自动完成需求拆解→计划生成→任务派发→代码执行→Git 交付的全链路闭环。平台采用五层架构（网关层 → 调度层 → 策划层 → 执行层 → 支持层），以 TypeScript monorepo 组织，总代码量约17万行。
+        </p>
+        <p class="text-[var(--muted-foreground)] leading-relaxed mt-3">
+          我在实习期间负责<strong>执行层</strong>三个核心模块的设计与落地：红黄绿灯分级容错协议、经验闭环学习机制、技能包流水线架构。这三个模块共同构成了 Agent 从"能执行"到"会执行、敢执行、越执行越好"的能力升级路径。
+        </p>
+      </section>
+
+      <!-- Tech Stack -->
+      <section>
+        <h2 class="text-lg font-medium mb-3">技术栈</h2>
+        <div class="flex flex-wrap gap-2">
+          {project.techStack.map(t => (
+            <span class="tag">{t}</span>
+          ))}
+        </div>
+      </section>
+
+      <!-- Architecture -->
+      <section>
+        <h2 class="text-lg font-medium mb-4">五层架构</h2>
+        <div class="space-y-4">
+          {[
+            { layer: '网关层', role: '统一入口 & 渠道归一化', desc: '接收网页/IM/API 等多渠道请求，统一归一化为标准请求格式。出站通知由网关统一推送，调度层只发事件不关心渠道。' },
+            { layer: '调度层', role: '任务生命周期管理', desc: '作为中间仲裁者，维护任务状态机，派发节点到执行层。不判断灯的颜色——只根据执行层返回的结果执行对应升级策略。' },
+            { layer: '策划层', role: '计划生成 & 增量重规划', desc: 'LLM 驱动的需求拆解与计划生成。当执行层返回黄灯/红灯信号时，负责增量或全局重规划，已完成的节点保持不变。' },
+            { layer: '执行层', role: 'Runner 注册 & 节点执行', desc: '我负责的层级。通过注册表模式动态路由任务到对应 Runner，集成红黄绿灯容错、经验闭环、技能包流水线三个核心模块。' },
+            { layer: '支持层', role: '基础设施 & 可观测性', desc: '日志、监控、审计、存储、事件总线。执行层产生的所有状态变更通过事件总线异步分发给各订阅者。' },
+          ].map(({ layer, role, desc }) => (
+            <div class="card p-4">
+              <div class="flex items-baseline gap-2 mb-1">
+                <h3 class="text-sm font-semibold">{layer}</h3>
+                <span class="text-xs text-[var(--accent)]">{role}</span>
+              </div>
+              <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Module 1: 红黄绿灯 -->
+      <section>
+        <h2 class="text-lg font-medium mb-3">模块一：红黄绿灯 · Agent 自主性分级协议</h2>
+        <div class="card p-5 space-y-4">
+          <div>
+            <h3 class="text-sm font-semibold mb-1">设计动机</h3>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
+              Agent 执行任务时，失败是常态而非异常。如果把所有失败都丢给用户处理，体验极差；如果让 Agent 无限重试，会烧 Token 且可能陷入死循环。需要一个<strong>分级决策框架</strong>，让 Agent 在"自己解决"和"请求帮助"之间做合理的自主判断。
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold mb-2">三级协议</h3>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3 p-3 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/10">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-xs font-bold">绿</span>
+                <div>
+                  <p class="text-sm font-medium">绿灯 · 节点内重试</p>
+                  <p class="text-xs text-[var(--muted-foreground)] mt-0.5">单次调用超时或可恢复错误 → Agent 自行重试（仅限幂等操作），上限有限次数。不需要调度层介入。</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3 p-3 rounded bg-yellow-500/5 border border-yellow-500/10">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-yellow-500/20 text-yellow-400 flex items-center justify-center text-xs font-bold">黄</span>
+                <div>
+                  <p class="text-sm font-medium">黄灯 · 增量重规划</p>
+                  <p class="text-xs text-[var(--muted-foreground)] mt-0.5">重试耗尽或依赖目标不存在等语义错误 → 不整体失败，触发增量重建，只修正受影响的节点，已完成部分保持不变。对标断路器的半开状态 + 降级策略。</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3 p-3 rounded bg-red-500/5 border border-red-500/10">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center text-xs font-bold">红</span>
+                <div>
+                  <p class="text-sm font-medium">红灯 · 全局重规划 + 人工介入</p>
+                  <p class="text-xs text-[var(--muted-foreground)] mt-0.5">同一失败模式反复出现，或重规划次数耗尽 → 停止自主决策，转为人工介入。对标断路器完全打开 + 告警。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold mb-1">关键设计决策</h3>
+            <ul class="list-disc list-inside text-sm text-[var(--muted-foreground)] space-y-1">
+              <li><strong>调度层不作颜色判断</strong>：调度层只根据执行层返回的信号执行对应升级策略，具体的"该亮什么灯"由执行层内部逻辑决定。</li>
+              <li><strong>防无限循环</strong>：通过 replan_count 阈值限制每个任务的重规划次数，达到上限强制红灯。</li>
+              <li><strong>灵感来源</strong>：Spring Cloud Hystrix 断路器三态模型（Closed → Open → Half-Open），将硬指标判断升级为语义感知的分级决策。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Module 2: 经验闭环 -->
+      <section>
+        <h2 class="text-lg font-medium mb-3">模块二：经验闭环 · L1→L2→L3 学习机制</h2>
+        <div class="card p-5 space-y-4">
+          <div>
+            <h3 class="text-sm font-semibold mb-1">设计动机</h3>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
+              Agent 每次执行都会产生大量有价值的信息——什么方法有效、什么路径不通、哪种 prompt 效果好。如果每次执行完就丢弃这些信息，Agent 永远是从零开始。需要一套机制让 Agent 从历史中学习，实现"越用越好用"。
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold mb-2">三级学习架构</h3>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3 p-3 rounded bg-[var(--accent)]/5">
+                <span class="flex-shrink-0 text-xs font-bold font-mono text-[var(--accent)] w-8">L1</span>
+                <div>
+                  <p class="text-sm font-medium">即时反思</p>
+                  <p class="text-xs text-[var(--muted-foreground)] mt-0.5">每次任务完成后，驱动 LLM 反思阶段，产出结构化执行报告（what_worked / what_failed / suggestions），写入记忆模块。作为后续任务的历史参考。</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3 p-3 rounded bg-[var(--accent)]/5">
+                <span class="flex-shrink-0 text-xs font-bold font-mono text-[var(--accent)] w-8">L2</span>
+                <div>
+                  <p class="text-sm font-medium">聚合分析</p>
+                  <p class="text-xs text-[var(--muted-foreground)] mt-0.5">定期（按时间窗口或任务数量阈值）跨多次执行做聚合，发现规律性问题和可复用模式。将高频失败原因和最佳实践提炼为可操作的优化建议。</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3 p-3 rounded bg-[var(--accent)]/5">
+                <span class="flex-shrink-0 text-xs font-bold font-mono text-[var(--accent)] w-8">L3</span>
+                <div>
+                  <p class="text-sm font-medium">策略注入</p>
+                  <p class="text-xs text-[var(--muted-foreground)] mt-0.5">技能加载时查询记忆模块，将历史经验动态注入当前执行上下文——调整重试策略、选择更优工具、优化 prompt 参数。L1 反思不直接修改技能包，保证多部门共享时的稳定性。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Module 3: 技能包流水线 -->
+      <section>
+        <h2 class="text-lg font-medium mb-3">模块三：技能包流水线 · 声明式插件架构</h2>
+        <div class="card p-5 space-y-4">
+          <div>
+            <h3 class="text-sm font-semibold mb-1">设计动机</h3>
+            <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
+              Agent 需要执行的任务类型是开放的——代码生成、测试运行、Git 操作、安全检查、部署触发……如果每种任务都硬编码一套执行逻辑，系统会迅速膨胀且不可维护。需要一个<strong>统一的运行时框架 + 可插拔的技能包机制</strong>，让新能力以声明式配置的方式接入，而不是改核心代码。
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold mb-2">架构设计</h3>
+            <div class="space-y-3">
+              <div>
+                <p class="text-sm font-medium">通用运行时</p>
+                <p class="text-xs text-[var(--muted-foreground)] mt-0.5">采用<strong>模板方法模式 + 策略模式</strong>，定义好"(1)准备上下文 → (2)注入 prompt → (3)调用 LLM → (4)解析输出 → (5)执行动作 → (6)记录结果"的标准六步管道，每个技能的差异化行为通过策略接口注入。</p>
+              </div>
+              <div>
+                <p class="text-sm font-medium">YAML 声明式定义</p>
+                <p class="text-xs text-[var(--muted-foreground)] mt-0.5">每个技能包由一个 YAML 文件定义，包含 7 个规范块：metadata、tools、security、recovery、pipeline、sub_agents、checklists。每个字段有明确的消费者（哪个管道阶段读取它），实现了"配置即文档"。</p>
+              </div>
+              <div>
+                <p class="text-sm font-medium">四级失败策略</p>
+                <p class="text-xs text-[var(--muted-foreground)] mt-0.5">重试 → 换路（备用工具/方案）→ 循环优化（调整 prompt 重试）→ 子 Agent 分解（拆分复杂任务）。每级升级由技能包的 recovery 块声明式配置。</p>
+              </div>
+              <div>
+                <p class="text-sm font-medium">编译检查硬约束</p>
+                <p class="text-xs text-[var(--muted-foreground)] mt-0.5">凡是会产生外部副作用的环节，必须在技能包中定义补偿操作，加载时做编译检查。这是把分布式事务的补偿思维编码为系统级约束，而非依赖开发者自觉。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Summary -->
+      <section>
+        <h2 class="text-lg font-medium mb-3">个人收获</h2>
+        <div class="card p-5">
+          <ul class="list-disc list-inside text-sm text-[var(--muted-foreground)] space-y-2">
+            <li><strong>后端思维迁移</strong>：Spring Cloud 的断路器、SAGA、网关、消息队列、配置中心等分布式设计模式，在 Agent 系统中找到了完美的映射场景。后端思维不为具体技术栈所限。</li>
+            <li><strong>大型 monorepo 协作</strong>：在 17 万行 TypeScript 项目中设计模块，学会了在现有架构约束下做增量设计，而非推翻重来。</li>
+            <li><strong>Agent 不是魔法</strong>：LLM 只是系统中的一个组件。真正让 Agent 稳定可用的，是围绕 LLM 构建的调度、容错、学习、编排等工程基础设施。</li>
+            <li><strong>抽象是核心竞争力</strong>：从红黄绿灯到经验闭环到技能包流水线，本质上都是在做"把变化隔离在可控范围内"的抽象设计——这是软件工程永恒的主题。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="pt-8 text-center">
+        <a href="/" class="inline-flex items-center gap-1.5 text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors font-mono">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m0 0l7 7m-7-7l7-7"/>
+          </svg>
+          返回首页
+        </a>
+      </footer>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15em 0.55em;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--color-tag-bg, rgba(255,255,255,0.06));
+    color: var(--color-tag-text, var(--muted));
+    border: 1px solid var(--border);
+  }
+</style>
