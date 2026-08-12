@@ -43,7 +43,7 @@ export const siteData: SiteData = {
       slug: 'neo-digital-employee',
       title: 'Neo 数字员工',
       titleEn: 'Neo AI Digital Employee — Execution Layer',
-      period: '2026.07 - 至今',
+      period: '2026.07 - 2026.08',
       tag: '实习项目',
       linkUrl: '/projects/neo',
       summary:
