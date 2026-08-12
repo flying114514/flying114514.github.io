@@ -198,7 +198,7 @@ export const siteData: SiteData = {
         '判断 AI Agent 是下一波技术浪潮，主动暂停 Java 传统后端技术学习，全面转向 AI 应用开发方向。半年内完成 LLM 工程化（RAG、Agent、Prompt Engineering）、Python 技术栈迁移、LangChain/SpringAI 框架实战，为后续 Neo 实习和两个 AI 项目的独立开发奠定基础。',
       contentEn:
         'Recognized AI Agents as the next technology wave and pivoted from traditional Java backend to AI application development. Within six months, mastered LLM engineering (RAG, Agent, Prompt Engineering), migrated to Python stack, and gained hands-on experience with LangChain/SpringAI — laying the groundwork for the Neo internship and two independent AI projects.',
-      icon: '🔀',
+      icon: '🔄',
     },
     {
       company: 'API 中转站',
@@ -210,7 +210,7 @@ export const siteData: SiteData = {
         '先成为 CamelAPI 中转站校园大使，在推广过程中洞察到国内开发者调用海外 LLM API 的痛点——网络不稳定、支付门槛高、多模型切换成本大。于是自建 API 中转网关（api.nailongapi.online），统一代理 OpenAI / Anthropic / Google 等多厂商接口，提供标准化鉴权与速率管控。上线后用户量破百，验证了"技术套利"从想法到落地的完整闭环。',
       contentEn:
         'Became a campus ambassador for CamelAPI, then identified pain points in domestic devs accessing overseas LLM APIs — network instability, payment friction, high switching cost. Built a self-hosted API proxy gateway unifying multi-provider interfaces with standardized auth and rate limiting. Surpassed 100 users post-launch, validating the full loop from "tech arbitrage" idea to real product.',
-      icon: '🔌',
+      icon: '⚡',
     },
     {
       company: '睿创微纳',
@@ -267,12 +267,12 @@ export const siteData: SiteData = {
 
   awards: [
     {
-      icon: '🥈',
+      icon: '🏅',
       title: 'APACM 亚太地区大学生数学建模竞赛',
       subtitle: '二等奖',
     },
     {
-      icon: '🥈',
+      icon: '🏅',
       title: '中国大学生计算机设计大赛',
       subtitle: '二等奖',
     },
@@ -285,7 +285,7 @@ export const siteData: SiteData = {
         '从传统后端转 AI Agent 开发一年后的深度思考：Spring Cloud 的分布式思维模型（断路器、SAGA、网关、消息队列、配置中心）如何一一映射到 Agent 系统设计中，以及为什么"后端思维"在 AI 时代不但没过时，反而更值钱了。',
       url: 'https://my.feishu.cn/docx/SxftdO40bo4gLZxQtnVcZhXjnfc',
       platform: '飞书文档',
-      platformIcon: '📄',
+      platformIcon: '✍️',
       tags: ['AI Agent', '后端思维', 'Spring Cloud', '分布式系统', '职业发展'],
       date: '2026-08',
     },
