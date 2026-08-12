@@ -32,11 +32,27 @@ export const siteData: SiteData = {
       period: '2026.07 - 至今',
       tag: '实习项目',
       summary:
-        'AI驱动任务编排与执行平台（17万行 TypeScript monorepo）。负责执行层三个核心模块：① 红黄绿灯三级Agent自主性分级协议（绿灯自理→黄灯增量重规划→红灯全局重建+人工介入）；② L1→L2→L3经验闭环机制（单次执行反思→跨任务聚合→技能加载时调优）；③ YAML声明式技能包流水线（通用运行时+可插拔技能包，7字段块规范，四级失败策略+补偿操作体系）。',
+        'AI驱动任务编排与执行平台（17万行 TypeScript monorepo，五层架构：网关→调度→策划→执行→支持）。负责执行层三个核心模块设计。',
       summaryEn:
-        'AI-driven task orchestration & execution platform (170K LoC TypeScript monorepo). Led three execution-layer modules: ① Red/Yellow/Green three-tier agent autonomy protocol; ② L1→L2→L3 experience feedback loop; ③ YAML-declarative skill package pipeline with pluggable architecture.',
+        'AI-driven task orchestration & execution platform (170K LoC, 5-layer architecture). Led three execution-layer core module designs.',
       techStack: ['TypeScript', 'Node.js', 'Express', 'Python', 'SQLite', 'PostgreSQL', 'Docker'],
-      highlights: [],
+      highlights: [
+        {
+          title: '红黄绿灯 · Agent 自主性分级协议',
+          content:
+            '设计三级重规划协议：绿灯（执行细节，Agent 自行重试解决）→ 黄灯（局部目标不确定，增量重规划只重建受影响节点）→ 红灯（整体方案失败，全局重规划+人工介入）。配合 replan_count 阈值防无限循环，调度层作为中间仲裁者不判断灯的颜色。',
+        },
+        {
+          title: '经验闭环 · L1→L2→L3 学习机制',
+          content:
+            'L1：每次任务完成后驱动反思阶段，产出结构化执行报告（what_worked/what_failed/suggestions）写入记忆模块。L2：定期跨执行聚合分析，发现规律。L3：技能加载时查询记忆模块，动态调整执行参数。关键边界——L1反思不直接修改技能包，保证多部门共享稳定性。',
+        },
+        {
+          title: '技能包流水线 · 声明式插件架构',
+          content:
+            '通用运行时+可插拔技能包（模板方法+策略模式）。YAML声明式7字段块规范（metadata/tools/security/recovery/pipeline/sub_agents/checklists），每个字段有明确消费者。四级失败策略（重试→换路→循环优化→子Agent分解），补偿操作由技能包自行定义（none/call_tool/irreversible），加载时编译检查硬约束。',
+        },
+      ],
     },
     {
       slug: 'rag-interview',
@@ -136,7 +152,7 @@ export const siteData: SiteData = {
     {
       company: '睿创微纳',
       companyEn: 'Raytron Microelectronics',
-      role: '智能体开发部 · 后端开发实习生',
+      role: '智能体开发部 · 智能体开发实习生',
       roleEn: 'Agent Development Dept · Backend Developer Intern',
       period: '2026.07 - 至今',
       content:
