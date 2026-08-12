@@ -2,37 +2,39 @@
 import { siteData } from '../data/content';
 ---
 
-<section id="awards" class="py-24 px-6 bg-[var(--bg-secondary)]">
-  <div class="mx-auto max-w-2xl">
-    <div class="text-center mb-14 reveal">
-      <p class="text-[12px] tracking-[0.2em] uppercase text-[var(--text-tertiary)] font-medium mb-3">Awards & Education</p>
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">荣誉奖项</h2>
+<section id="awards" class="section px-6 bg-[var(--bg-secondary)]">
+  <div class="mx-auto max-w-3xl">
+    <div class="text-center mb-20 reveal">
+      <div class="section-label">Awards & Education</div>
+      <h2 class="large-heading">
+        <em class="text-italics">Where</em> I shine
+      </h2>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 reveal-stagger">
       {siteData.awards.map((a) => (
-        <div class="card p-5 flex items-center gap-4">
+        <div class="track-card p-5 flex items-center gap-4">
           <span class="text-2xl flex-shrink-0">{a.icon}</span>
           <div>
-            <p class="text-[14px] font-semibold leading-snug">{a.title}</p>
-            <p class="text-[13px] text-[var(--text-secondary)] mt-0.5">{a.subtitle}</p>
+            <p class="text-sm font-medium leading-snug">{a.title}</p>
+            <p class="text-xs text-[var(--text-tertiary)] mt-0.5">{a.subtitle}</p>
           </div>
         </div>
       ))}
 
       <!-- Education card -->
-      <div class="card p-5 flex items-center gap-4">
+      <div class="track-card p-5 flex items-center gap-4">
         <span class="text-2xl flex-shrink-0">🎓</span>
         <div>
-          <p class="text-[14px] font-semibold leading-snug">{siteData.school}</p>
-          <p class="text-[13px] text-[var(--text-secondary)] mt-0.5">{siteData.major} &middot; 2024 &ndash; 2028</p>
+          <p class="text-sm font-medium leading-snug">{siteData.school}</p>
+          <p class="text-xs text-[var(--text-tertiary)] mt-0.5">{siteData.major} &middot; 2024 &ndash; 2028</p>
         </div>
       </div>
     </div>
 
     <!-- School tag -->
-    <div class="mt-3 text-center">
-      <span class="inline-block tag text-[12px]">211 / 双一流</span>
+    <div class="mt-4 text-center reveal">
+      <span class="tag text-xs">211 / 双一流</span>
     </div>
   </div>
 </section>

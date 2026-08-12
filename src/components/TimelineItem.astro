@@ -9,19 +9,19 @@ interface Props {
 const { experience, isLast = false } = Astro.props;
 ---
 
-<div class="relative pl-14">
-  <!-- Node -->
-  <div class="absolute left-[11px] top-1.5 w-2.5 h-2.5 rounded-full bg-[var(--accent)] ring-4 ring-[var(--accent-subtle)]"></div>
+<div class="relative pl-10 sm:pl-12">
+  <!-- Dot -->
+  <div class="timeline-dot absolute left-0 top-1.5"></div>
 
-  <span class="text-[12px] font-mono text-[var(--accent)] tracking-wide font-medium">{experience.period}</span>
+  <span class="text-xs font-mono uppercase tracking-widest text-[var(--text-tertiary)]">{experience.period}</span>
 
-  <div class="mt-1 mb-1.5">
-    <h3 class="text-lg font-bold inline">
+  <div class="mt-2 mb-1.5 flex items-center gap-2 flex-wrap">
+    <h3 class="text-xl font-medium">
       {experience.company}
     </h3>
-    <span class="text-[13px] text-[var(--text-tertiary)] ml-2 font-normal">{experience.companyEn}</span>
+    <span class="text-xs text-[var(--text-tertiary)] font-mono">{experience.companyEn}</span>
   </div>
 
-  <p class="text-[14px] text-[var(--text-secondary)] font-medium mb-2">{experience.role}</p>
-  <p class="text-[14px] text-[var(--text-secondary)] leading-relaxed">{experience.content}</p>
+  <p class="text-sm font-medium text-[var(--text)] mb-2">{experience.role}</p>
+  <p class="p-60">{experience.content}</p>
 </div>

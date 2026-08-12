@@ -2,49 +2,77 @@
 import { siteData } from '../data/content';
 ---
 
-<section
-  id="hero"
-  class="relative min-h-screen flex items-center justify-center overflow-hidden px-6"
->
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
   <!-- Ambient background -->
-  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-    <div class="absolute top-1/3 -left-32 w-[500px] h-[500px] bg-teal-200/20 rounded-full blur-[120px]"></div>
-    <div class="absolute bottom-1/4 -right-32 w-[400px] h-[400px] bg-teal-400/10 rounded-full blur-[100px]"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-100/10 rounded-full blur-[150px]"></div>
+  <div class="absolute inset-0 -z-10" aria-hidden="true">
+    <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-white/5 blur-[120px]"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-white/[0.02] blur-[100px]"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-white/[0.01] blur-[150px]"></div>
   </div>
 
-  <div class="relative z-10 text-center max-w-2xl mx-auto reveal is-visible">
-    <p class="text-[13px] tracking-[0.2em] uppercase mb-5 text-[var(--text-tertiary)] font-medium">
-      Portfolio
-    </p>
+  <!-- Grid texture -->
+  <div class="absolute inset-0 -z-10 opacity-[0.03]" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 40px 40px;" aria-hidden="true"></div>
 
-    <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-5 leading-[1.05]">
-      Hi, I&rsquo;m
-      <span class="text-[var(--accent)]">{siteData.name}</span>
+  <div class="relative z-10 mx-auto max-w-4xl px-6 py-20 text-center">
+    <!-- Promo bar -->
+    <div class="reveal">
+      <div class="promo-bar">
+        <span class="w-2 h-2 rounded-full bg-green-400 mr-2 inline-block"></span>
+        Available for hire &middot; 2026
+      </div>
+    </div>
+
+    <!-- Main heading — Origin style -->
+    <h1 class="reveal text-[clamp(3rem,8vw,6.5rem)] font-light leading-[1.05] tracking-[-0.03em] mb-6">
+      <em class="text-italics">Build</em> the future,<br class="hidden sm:block" />
+      <em class="text-italics">one</em> agent at a time.
     </h1>
 
-    <p class="text-lg sm:text-xl text-[var(--text-secondary)] mb-3 font-medium">
-      {siteData.tagline}
-    </p>
-    <p class="text-[15px] text-[var(--text-tertiary)] mb-10">
-      {siteData.school} &middot; {siteData.major}
-    </p>
-
-    <div class="flex items-center justify-center gap-3">
-      <a href="#projects" class="btn btn-primary">查看项目</a>
-      <a href="#contact" class="btn btn-secondary">联系我</a>
+    <!-- Subtitle -->
+    <div class="reveal max-w-xl mx-auto mb-10">
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed">
+        {siteData.tagline}
+      </p>
+      <p class="mt-3 p-60">
+        {siteData.school} &middot; {siteData.major}<br />
+        睿创微纳 · 智能体开发部 实习中
+      </p>
     </div>
-  </div>
 
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
-    <svg
-      class="w-5 h-5 text-[var(--text-tertiary)] animate-bounce"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-    </svg>
+    <!-- CTAs -->
+    <div class="reveal flex items-center justify-center gap-4 flex-wrap">
+      <a href="#projects" class="btn btn-primary group">
+        View Projects
+        <svg class="w-4 h-4 transition-transform duration-[var(--duration-fast)] group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+      <a href="#contact" class="btn btn-dark">
+        Get in Touch
+      </a>
+    </div>
+
+    <!-- AI search bar mockup -->
+    <div class="reveal mt-16 max-w-lg mx-auto">
+      <div class="flex items-center gap-3 px-5 py-4 rounded-full bg-[var(--surface)] border border-[var(--border)] text-left">
+        <svg class="w-4 h-4 text-[var(--text-tertiary)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+        </svg>
+        <span class="text-sm text-[var(--text-tertiary)] flex-1">Ask me anything about my work...</span>
+        <div class="flex items-center justify-center w-7 h-7 rounded-full bg-[var(--accent)] text-[var(--accent-text)] flex-shrink-0">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="reveal mt-16 flex flex-col items-center gap-2 text-[var(--text-tertiary)]">
+      <span class="text-[11px] font-mono uppercase tracking-widest">Scroll</span>
+      <div class="w-5 h-8 rounded-full border border-[var(--border)] flex items-start justify-center p-1">
+        <div class="w-1 h-2 rounded-full bg-[var(--text-tertiary)] animate-bounce"></div>
+      </div>
+    </div>
   </div>
 </section>

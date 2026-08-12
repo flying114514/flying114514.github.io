@@ -3,18 +3,20 @@ import { siteData } from '../data/content';
 import TimelineItem from './TimelineItem.astro';
 ---
 
-<section id="experience" class="py-24 px-6 bg-[var(--bg-secondary)]">
-  <div class="mx-auto max-w-2xl">
-    <div class="text-center mb-16 reveal">
-      <p class="text-[12px] tracking-[0.2em] uppercase text-[var(--text-tertiary)] font-medium mb-3">Experience</p>
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">实习经历</h2>
+<section id="experience" class="section px-6 bg-[var(--bg-secondary)]">
+  <div class="mx-auto max-w-3xl">
+    <div class="text-center mb-20 reveal">
+      <div class="section-label">Experience</div>
+      <h2 class="large-heading">
+        <em class="text-italics">Where</em> I&rsquo;ve worked
+      </h2>
     </div>
 
     <div class="relative reveal-stagger">
       <!-- Timeline line -->
-      <div class="absolute left-[15px] top-2 bottom-2 w-px bg-[var(--border)]"></div>
+      <div class="timeline-line left-[7px] sm:left-[9px]"></div>
 
-      <div class="space-y-14">
+      <div class="space-y-16">
         {siteData.experiences.map((exp, i) => (
           <TimelineItem
             experience={exp}

@@ -2,71 +2,62 @@
 import ThemeToggle from './ThemeToggle.astro';
 
 const links = [
-  { id: 'hero', label: '首页' },
-  { id: 'projects', label: '项目' },
-  { id: 'experience', label: '经历' },
-  { id: 'skills', label: '技能' },
-  { id: 'contact', label: '联系' },
+  { id: 'hero', label: 'Home', cn: '首页' },
+  { id: 'projects', label: 'Projects', cn: '项目' },
+  { id: 'experience', label: 'Experience', cn: '经历' },
+  { id: 'skills', label: 'Skills', cn: '技能' },
+  { id: 'contact', label: 'Contact', cn: '联系' },
 ];
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50">
-  <nav
-    class="mx-auto max-w-3xl flex items-center justify-between px-6 h-14 mt-3 rounded-2xl
-           bg-[var(--surface)]/70 backdrop-blur-xl border border-[var(--border-light)]
-           shadow-[var(--shadow-sm)]"
-    style="transition: background-color var(--duration-slow) var(--ease-out),
-                   border-color var(--duration-slow) var(--ease-out);"
-  >
+  <div class="mx-auto max-w-6xl flex items-center justify-between px-6 lg:px-8 h-16">
+    <!-- Logo -->
     <a
       href="#hero"
-      class="text-[15px] font-semibold tracking-tight text-[var(--accent)] transition-transform duration-[var(--duration-fast)] hover:scale-105"
+      class="font-mono text-sm font-medium tracking-tight text-[var(--text)] opacity-80 hover:opacity-100 transition-opacity duration-[var(--duration-fast)]"
     >
       LH
     </a>
 
-    <div class="flex items-center gap-1">
-      <ul class="hidden sm:flex items-center gap-0.5">
-        {links.map((l) => (
-          <li>
-            <a
-              href={`#${l.id}`}
-              class="px-3 py-1.5 rounded-md text-[13px] font-medium text-[var(--text-tertiary)]
-                     hover:text-[var(--text)] hover:bg-[var(--surface-hover)]
-                     transition-colors duration-[var(--duration-fast)]"
-            >
-              {l.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <div class="w-px h-4 bg-[var(--border)] mx-1 hidden sm:block"></div>
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-8">
+      {links.map((l) => (
+        <a
+          href={`#${l.id}`}
+          class="nav-link-style"
+        >
+          {l.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Right group -->
+    <div class="flex items-center gap-4">
       <ThemeToggle />
       <!-- Mobile menu button -->
       <button
         id="menu-btn"
-        class="sm:hidden p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors duration-[var(--duration-fast)] text-[var(--text-tertiary)]"
+        class="md:hidden flex flex-col gap-1.5 p-2 -mr-2"
         aria-label="菜单"
       >
-        <svg id="icon-hamburger" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-        </svg>
-        <svg id="icon-close" class="w-[18px] h-[18px] hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
-        </svg>
+        <span id="bar1" class="menu-bar"></span>
+        <span id="bar2" class="menu-bar"></span>
+        <span id="bar3" class="menu-bar"></span>
       </button>
     </div>
-  </nav>
+  </div>
 
   <!-- Mobile dropdown -->
-  <div id="mobile-menu" class="sm:hidden hidden mx-6 mt-2 rounded-xl bg-[var(--surface)] border border-[var(--border-light)] shadow-[var(--shadow-lg)] overflow-hidden">
-    <div class="py-2 px-2">
+  <div id="mobile-menu" class="md:hidden hidden mx-6 mt-1 rounded-xl bg-[var(--surface)] border border-[var(--border)] shadow-[var(--shadow-xl)] overflow-hidden backdrop-blur-xl">
+    <div class="py-3 px-3 flex flex-col gap-1">
       {links.map((l) => (
         <a
           href={`#${l.id}`}
-          class="mobile-link block px-3 py-2.5 rounded-lg text-[14px] font-medium text-[var(--text-secondary)] hover:text-[var(--text)] hover:bg-[var(--surface-hover)] transition-colors duration-[var(--duration-fast)]"
+          class="mobile-link flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text)] hover:bg-[var(--surface-hover)] transition-colors duration-[var(--duration-fast)]"
         >
-          {l.label}
+          <span>{l.label}</span>
+          <span class="text-xs text-[var(--text-tertiary)]">{l.cn}</span>
         </a>
       ))}
     </div>
@@ -76,21 +67,33 @@ const links = [
 <script>
   const menuBtn = document.getElementById('menu-btn');
   const menu = document.getElementById('mobile-menu');
-  const hamburger = document.getElementById('icon-hamburger')!;
-  const closeIcon = document.getElementById('icon-close')!;
+  const bar1 = document.getElementById('bar1')!;
+  const bar2 = document.getElementById('bar2')!;
+  const bar3 = document.getElementById('bar3')!;
 
+  let open = false;
   menuBtn?.addEventListener('click', () => {
-    const isOpen = !menu?.classList.contains('hidden');
-    menu?.classList.toggle('hidden');
-    hamburger.classList.toggle('hidden', !isOpen);
-    closeIcon.classList.toggle('hidden', isOpen);
+    open = !open;
+    menu?.classList.toggle('hidden', !open);
+
+    if (open) {
+      bar1.style.transform = 'translate(3px, -1px) rotate(45deg)';
+      bar2.style.opacity = '0';
+      bar3.style.transform = 'translate(3px, 1px) rotate(-45deg)';
+    } else {
+      bar1.style.transform = 'none';
+      bar2.style.opacity = '1';
+      bar3.style.transform = 'none';
+    }
   });
 
   document.querySelectorAll('.mobile-link').forEach((l) => {
     l.addEventListener('click', () => {
+      open = false;
       menu?.classList.add('hidden');
-      hamburger.classList.remove('hidden');
-      closeIcon.classList.add('hidden');
+      bar1.style.transform = 'none';
+      bar2.style.opacity = '1';
+      bar3.style.transform = 'none';
     });
   });
 </script>
