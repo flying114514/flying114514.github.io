@@ -73,7 +73,7 @@ export const siteData: SiteData = {
       slug: 'agent-trace',
       title: 'Agent 执行可观测与回放',
       titleEn: 'Agent Execution Observability & Replay',
-      period: '2026.08',
+      period: '2026.07',
       tag: '个人项目',
       githubUrl: 'https://github.com/flying114514/agent-trace-skill',
       summary:
