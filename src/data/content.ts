@@ -70,6 +70,41 @@ export const siteData: SiteData = {
       ],
     },
     {
+      slug: 'agent-trace',
+      title: 'Agent 执行可观测与回放',
+      titleEn: 'Agent Execution Observability & Replay',
+      period: '2026.08',
+      tag: '个人项目',
+      githubUrl: 'https://github.com/flying114514/agent-trace-skill',
+      summary:
+        'Agent 可观测性 Skill：旁路采集一次 Agent 执行的完整轨迹（LLM 调用、工具调用、重试、错误），落盘为 JSONL 事件流 + payload 大对象，事后按时间线回放并自动高亮可疑问题点。纯 Python、零第三方依赖。',
+      summaryEn:
+        'Observability skill for Agent executions: side-channel captures a full trace (LLM calls, tool calls, retries, errors) into a JSONL event stream + payload store, then replays it as a timeline with automatic anomaly highlighting. Pure Python, zero dependencies.',
+      techStack: ['Python', 'JSONL', 'Event Schema', 'Claude Code Hook', 'Trace Replay', 'Observability'],
+      highlights: [
+        {
+          title: '旁路采集 · 不侵入 Agent 主流程',
+          content:
+            '通过 Claude Code hook（PostToolUse / Stop）在边上记录事件，采集层只写轨迹、不参与 Agent 业务决策流，保证观测不改变被观测系统的行为。',
+        },
+        {
+          title: '两级存储 · 事件流 + payload 分离',
+          content:
+            '完整 prompt/response/工具入参出参走 payload 目录独立落盘，事件流只留 payload_ref 引用，回放查询不因大内容降速。',
+        },
+        {
+          title: 'JSONL 而非数据库',
+          content:
+            '轨迹是"追加写、顺序读"场景：零依赖、可 tail、可断点续写，崩溃最多丢最后半行；回放按 seq 递增序号顺序扫描。',
+        },
+        {
+          title: '回放带判断 · 不是倒日志',
+          content:
+            '时间线渲染还原 parent_id 嵌套层级；Reporter 内置重试风暴/错误/会话中断三条规则自动标出可疑点，先看结论再下钻。',
+        },
+      ],
+    },
+    {
       slug: 'rag-interview',
       title: 'RAG 智能面试平台',
       titleEn: 'RAG-Powered Intelligent Interview Platform',
