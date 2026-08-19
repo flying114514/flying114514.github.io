@@ -26,6 +26,41 @@ export const siteData: SiteData = {
 
   projects: [
     {
+      slug: 'ai-gateway',
+      title: 'AI 网关 · 智能路由',
+      titleEn: 'AI Gateway — Intelligent Model Routing',
+      period: '2026.08',
+      tag: '独立运维',
+      linkUrl: 'https://gateway.nailongapi.online/',
+      summary:
+        '托管形态的 AI 网关，自动把 Claude Code 请求按难度路由到不同模型——普通任务切便宜模型、重要任务切贵模型，在不损失质量的前提下自动降低 token 成本。多租户隔离、SSE 流式透传、限流配额与计费追踪全链路。',
+      summaryEn:
+        'Hosted AI gateway that routes Claude Code requests to cheaper or pricier models based on task difficulty, cutting token costs without quality loss — with multi-tenant isolation, SSE streaming, rate limiting, and billing tracking end-to-end.',
+      techStack: ['Python', 'FastAPI', 'SQLite', 'SSE Streaming', 'httpx', 'Docker'],
+      highlights: [
+        {
+          title: '智能路由裁判 · 复杂任务不误降级',
+          content:
+            '读请求内容判难度：短、单轮、无 tool 历史才交给裁判判定，判「complex」则不降级（复杂任务保护），「simple / normal」才降级到便宜模型；裁判走租户自己的最便宜对话模型（暗箱，成本记租户自己 key 上）。',
+        },
+        {
+          title: '级联升级 · 保守路由',
+          content:
+            '按顺序命中规则（已属便宜档 / 多步 agent 循环 / 输入超阈值 / 带图）优先不降级，只在有把握时降级；降级后若报错/超时，自动升级回原贵模型重跑。',
+        },
+        {
+          title: '多租户隔离 + 计费追踪',
+          content:
+            '每租户自带上游中转站 key，路由与记账按租户隔离；从 SSE 提取 input/output tokens 落 SQLite，按 group_ratio 算真实成本与节省，运营方 /admin 面板 + 租户 /dashboard 自助面板。',
+        },
+        {
+          title: '生产化加固',
+          content:
+            'SQLite WAL 并发安全、流式中断取消（客户端断开即停上游并结算）、每租户 RPM/TPM 限流 + 每日费用封顶、上游 key Fernet 静态加密 + 每请求 X-Request-ID 贯穿追踪。',
+        },
+      ],
+    },
+    {
       slug: 'api-proxy',
       title: 'API 中转站',
       titleEn: 'LLM API Proxy Gateway',
