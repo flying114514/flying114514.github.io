@@ -78,7 +78,7 @@ export const siteData: SiteData = {
       slug: 'neo-digital-employee',
       title: 'Neo 数字员工',
       titleEn: 'Neo AI Digital Employee — Execution Layer',
-      period: '2026.07 - 2026.08',
+      period: '2026.06 - 2026.08',
       tag: '实习项目',
       linkUrl: '/projects/neo',
       summary:
@@ -140,46 +140,6 @@ export const siteData: SiteData = {
       ],
     },
     {
-      slug: 'rag-interview',
-      title: 'RAG 智能面试平台',
-      titleEn: 'RAG-Powered Intelligent Interview Platform',
-      period: '2025.09 - 2025.12',
-      tag: '个人项目',
-      githubUrl: 'https://github.com/flying114514/rag-ui',
-      summary:
-        'AI面试全流程平台，覆盖简历分析、模拟面试、RAG问答、多模态评分，支持文字/视频双模面试，集成语音识别与 WebSocket 实时转写。',
-      summaryEn:
-        'Full-stack AI interview platform covering resume analysis, mock interviews, RAG Q&A, and multimodal scoring — supporting text/video dual-mode interviews with speech recognition and WebSocket real-time transcription.',
-      techStack: ['Java 21', 'Spring Boot', 'SpringAI', 'pgvector', 'Redis', 'MinIO', 'Tika', 'Docker'],
-      highlights: [
-        {
-          title: '多模型 Agent 决策',
-          content:
-            'LLM 驱动面试决策引擎，根据候选人回答自动追问/换题/结束，规则兜底 + 追问深度硬上限防死循环。',
-        },
-        {
-          title: 'LLM 结构化输出框架',
-          content:
-            '全项目 Agent 复用的泛型框架，6 类错误分类映射硬编码诊断提示杜绝 prompt 注入，主模型不可用时自动切换 OpenRouter 降级重试。',
-        },
-        {
-          title: 'RAG 检索增强',
-          content:
-            'Query 改写 + 原问题双候选兜底，自适应检索参数，SSE 流式探测窗口提前终止无效输出，未命中降级通用问答。',
-        },
-        {
-          title: '多模态面试分析',
-          content:
-            'STT 三层兜底（客户端直传 → Deepgram → mock），LLM 多维度评分 + 按回答长度三档规则兜底。',
-        },
-        {
-          title: '异步任务 + 限流',
-          content:
-            '模板方法实现 Redis Stream 异步框架（三条流水线 + 失败 ACK 后重投 + Prometheus 埋点）；Lua + ZSET 滑动窗口声明式限流。',
-        },
-      ],
-    },
-    {
       slug: 'text2sql-copilot',
       title: 'Text2SQL 对话式数据分析 Copilot',
       titleEn: 'Text2SQL Conversational Data Analysis Copilot',
@@ -216,6 +176,46 @@ export const siteData: SiteData = {
           title: '反馈飞轮 + 微调流水线',
           content:
             'YAML 声明式定义业务口径注入 prompt；飞书 Bot 每 6h 监测反馈数据量，双触发条件推送通知，QLoRA 训练 → 新旧模型评测对比决策，全流程审计日志可追溯。',
+        },
+      ],
+    },
+    {
+      slug: 'rag-interview',
+      title: 'RAG 智能面试平台',
+      titleEn: 'RAG-Powered Intelligent Interview Platform',
+      period: '2025.09 - 2025.12',
+      tag: '个人项目',
+      githubUrl: 'https://github.com/flying114514/rag-ui',
+      summary:
+        'AI面试全流程平台，覆盖简历分析、模拟面试、RAG问答、多模态评分，支持文字/视频双模面试，集成语音识别与 WebSocket 实时转写。',
+      summaryEn:
+        'Full-stack AI interview platform covering resume analysis, mock interviews, RAG Q&A, and multimodal scoring — supporting text/video dual-mode interviews with speech recognition and WebSocket real-time transcription.',
+      techStack: ['Java 21', 'Spring Boot', 'SpringAI', 'pgvector', 'Redis', 'MinIO', 'Tika', 'Docker'],
+      highlights: [
+        {
+          title: '多模型 Agent 决策',
+          content:
+            'LLM 驱动面试决策引擎，根据候选人回答自动追问/换题/结束，规则兜底 + 追问深度硬上限防死循环。',
+        },
+        {
+          title: 'LLM 结构化输出框架',
+          content:
+            '全项目 Agent 复用的泛型框架，6 类错误分类映射硬编码诊断提示杜绝 prompt 注入，主模型不可用时自动切换 OpenRouter 降级重试。',
+        },
+        {
+          title: 'RAG 检索增强',
+          content:
+            'Query 改写 + 原问题双候选兜底，自适应检索参数，SSE 流式探测窗口提前终止无效输出，未命中降级通用问答。',
+        },
+        {
+          title: '多模态面试分析',
+          content:
+            'STT 三层兜底（客户端直传 → Deepgram → mock），LLM 多维度评分 + 按回答长度三档规则兜底。',
+        },
+        {
+          title: '异步任务 + 限流',
+          content:
+            '模板方法实现 Redis Stream 异步框架（三条流水线 + 失败 ACK 后重投 + Prometheus 埋点）；Lua + ZSET 滑动窗口声明式限流。',
         },
       ],
     },
@@ -287,12 +287,24 @@ export const siteData: SiteData = {
       companyEn: 'Raytron Microelectronics',
       role: '智能体开发部 · 智能体开发实习生',
       roleEn: 'Agent Development Dept · Agent Development Intern',
-      period: '2026.07 - 至今',
+      period: '2026.06 - 至今',
       content:
         '负责 Neo 数字员工中 Git 代码交付节点的开发，涵盖项目与 Git 仓库的绑定与初始化、任务完成后的 Git 提交与推送、多 Commit 冲突处理与嵌套仓库拉取。这是 Neo 从"能写代码"到"能交付代码"的关键一环。',
       contentEn:
         'Responsible for developing the Git code delivery node in Neo Digital Employee, covering project-Git repo binding and initialization, post-task Git commit & push, multi-commit conflict resolution, and nested repository pulling — the key link from "can write code" to "can deliver code".',
       icon: '🚀',
+    },
+    {
+      company: 'AI 网关',
+      companyEn: 'AI Gateway',
+      role: '中转站智能路由层 · 独立开发',
+      roleEn: 'Smart-Routing Layer · Independent Development',
+      period: '2026.08',
+      content:
+        '在自建 API 中转站（api.nailongapi.online）基础上，开发托管形态的 AI 网关——中转站智能路由层。让 Claude Code 用户「普通任务切便宜模型、重要任务切贵模型」，自动降低 token 成本。实现多租户隔离、SSE 流式透传、限流配额与计费追踪全链路。',
+      contentEn:
+        'Built a hosted AI gateway — a smart-routing layer on top of the self-hosted API proxy. Routes Claude Code requests to cheaper or pricier models based on task difficulty to cut token costs, with multi-tenant isolation, SSE streaming, rate limiting, and billing tracking end-to-end.',
+      icon: '🔀',
     },
   ],
 
