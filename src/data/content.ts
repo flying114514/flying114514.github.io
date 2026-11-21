@@ -265,9 +265,9 @@ export const siteData: SiteData = {
       roleEn: 'From Traditional Backend to AI Application Development',
       period: '2026.02',
       content:
-        '判断 AI Agent 是下一波技术浪潮，主动暂停 Java 传统后端技术学习，全面转向 AI 应用开发方向。半年内完成 LLM 工程化（RAG、Agent、Prompt Engineering）、Python 技术栈迁移、LangChain/SpringAI 框架实战，为后续 Neo 实习和两个 AI 项目的独立开发奠定基础。',
+        '判断 AI Agent 是下一波技术浪潮，主动暂停 Java 传统后端技术学习，全面转向 AI 应用开发方向。半年内学习 LLM 工程化（RAG、Agent、Prompt Engineering），完成 Python 技术栈迁移，并实践 LangChain 和 Spring AI，为后续实习和项目开发奠定基础。',
       contentEn:
-        'Recognized AI Agents as the next technology wave and pivoted from traditional Java backend to AI application development. Within six months, mastered LLM engineering (RAG, Agent, Prompt Engineering), migrated to Python stack, and gained hands-on experience with LangChain/SpringAI — laying the groundwork for the Neo internship and two independent AI projects.',
+        'Recognized the potential of AI agents and shifted from traditional Java backend development to AI application development. Over six months, studied LLM engineering (RAG, agents, and prompt engineering), moved to Python, and gained hands-on experience with LangChain and Spring AI, laying the groundwork for later internships and projects.',
       icon: '🔄',
     },
     {
@@ -277,9 +277,9 @@ export const siteData: SiteData = {
       roleEn: 'From Campus Ambassador to Self-Built Platform',
       period: '2026.06',
       content:
-        '先成为 CamelAPI 中转站校园大使，在推广过程中洞察到国内开发者调用海外 LLM API 的痛点——网络不稳定、支付门槛高、多模型切换成本大。于是自建 API 中转网关（api.nailongapi.online），统一代理 OpenAI / Anthropic / Google 等多厂商接口，提供标准化鉴权与速率管控。上线后用户量破百，验证了"技术套利"从想法到落地的完整闭环。',
+        '担任 CamelAPI 校园大使期间，发现国内开发者在调用海外 LLM API 时面临网络不稳定、支付门槛高和模型切换成本大等问题。随后自建 API 中转站，统一接入多家模型服务商，提供标准化鉴权与限流。上线后用户量破百，现因个人生活压力已下线。',
       contentEn:
-        'Became a campus ambassador for CamelAPI, then identified pain points in domestic devs accessing overseas LLM APIs — network instability, payment friction, high switching cost. Built a self-hosted API proxy gateway unifying multi-provider interfaces with standardized auth and rate limiting. Surpassed 100 users post-launch, validating the full loop from "tech arbitrage" idea to real product.',
+        'As a CamelAPI campus ambassador, I saw how unreliable connections, payment barriers, and model switching made overseas LLM APIs harder to use. I built an API proxy with unified authentication and rate limiting across providers. It reached over 100 users before I took it offline due to personal pressures.',
       icon: '⚡',
     },
     {
@@ -289,22 +289,22 @@ export const siteData: SiteData = {
       roleEn: 'Agent Development Dept · Agent Development Intern',
       period: '2026.06 - 至今',
       content:
-        '负责 Neo 数字员工中 Git 代码交付节点的开发，涵盖项目与 Git 仓库的绑定与初始化、任务完成后的 Git 提交与推送、多 Commit 冲突处理与嵌套仓库拉取。这是 Neo 从"能写代码"到"能交付代码"的关键一环。',
+        '优化基于 DAG 的动态任务调度，较串行编排平均耗时降低约 40%；通过共享与私有白板分离、按需传递摘要，平均 Token 消耗降低 26.4%。设计 Skill 生命周期状态机，从任务 Trace 中提炼可复用工作流，并统一管理验证、上线、复用、迭代与下线。',
       contentEn:
-        'Responsible for developing the Git code delivery node in Neo Digital Employee, covering project-Git repo binding and initialization, post-task Git commit & push, multi-commit conflict resolution, and nested repository pulling — the key link from "can write code" to "can deliver code".',
+        'Optimized dynamic DAG scheduling, cutting average task runtime by about 40% versus serial execution. Separated shared and private agent context and passed summaries on demand, reducing average token usage by 26.4%. Designed a Skill lifecycle state machine to turn task traces into reusable workflows and manage validation, rollout, reuse, iteration, and retirement.',
       icon: '🚀',
     },
     {
-      company: 'AI 网关',
-      companyEn: 'AI Gateway',
-      role: '中转站智能路由层 · 独立开发',
-      roleEn: 'Smart-Routing Layer · Independent Development',
-      period: '2026.08',
+      company: '出海副业',
+      companyEn: 'Cross-Border Side Business',
+      role: '独立运营',
+      roleEn: 'Independent Operator',
+      period: '2026.09 - 2026.11',
       content:
-        '在自建 API 中转站（api.nailongapi.online）基础上，开发托管形态的 AI 网关——中转站智能路由层。让 Claude Code 用户「普通任务切便宜模型、重要任务切贵模型」，自动降低 token 成本。实现多租户隔离、SSE 流式透传、限流配额与计费追踪全链路。',
+        '独立运营出海副业，三个月累计营业额超过 4 万。',
       contentEn:
-        'Built a hosted AI gateway — a smart-routing layer on top of the self-hosted API proxy. Routes Claude Code requests to cheaper or pricier models based on task difficulty to cut token costs, with multi-tenant isolation, SSE streaming, rate limiting, and billing tracking end-to-end.',
-      icon: '🔀',
+        'Ran a cross-border side business that generated over 40,000 in total revenue over three months.',
+      icon: '🌍',
     },
   ],
 
