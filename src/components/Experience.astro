@@ -1,24 +1,31 @@
 ---
 import { siteData } from '../data/content';
 import TimelineItem from './TimelineItem.astro';
+
+// The source is chronological by start date; show recent work first.
+const experiences = [...siteData.experiences].reverse();
 ---
 
-<section id="experience" class="py-16 sm:py-20 px-6">
-  <div class="mx-auto max-w-3xl">
-    <div class="text-center mb-12 reveal">
+<section id="experience" aria-labelledby="experience-title" class="py-16 sm:py-20 px-6">
+  <div class="mx-auto max-w-4xl">
+    <header class="mb-8 sm:mb-10">
       <div class="section-label">Experience</div>
-      <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-light tracking-[-0.03em] leading-[1.1]">
-        <em class="text-italics">The</em> path
+      <h2 id="experience-title" class="text-[clamp(2rem,5vw,3.5rem)] font-light tracking-[-0.03em] leading-[1.1]">
+        <em class="text-italics">The</em> Path
       </h2>
-    </div>
+    </header>
 
-    <div class="relative reveal-stagger">
-      <div class="timeline-line"></div>
-      <div class="space-y-12">
-        {siteData.experiences.map((exp, i) => (
-          <TimelineItem experience={exp} />
-        ))}
-      </div>
-    </div>
+    <ol role="list" class="path-list">
+      {experiences.map((experience) => <TimelineItem experience={experience} />)}
+    </ol>
   </div>
 </section>
+
+<style>
+  .path-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid var(--border);
+  }
+</style>

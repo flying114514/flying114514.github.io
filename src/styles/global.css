@@ -570,30 +570,6 @@ body {
 }
 
 /* ============================================
-   Timeline
-   ============================================ */
-
-.timeline-line {
-  position: absolute;
-  left: 7px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--border);
-}
-
-.timeline-dot {
-  position: absolute;
-  left: 3px;
-  top: 6px;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--foreground);
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
-}
-
-/* ============================================
    Menu Bar (hamburger)
    ============================================ */
 

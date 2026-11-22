@@ -11,14 +11,14 @@ export const siteData: SiteData = {
   majorEn: 'Information Management & Information Systems',
 
   intro: [
-    '你好！我是刘辉，华中农业大学信息管理与信息系统专业本科生，目前在睿创微纳智能体开发部担任智能体开发实习生。',
+    '你好！我是刘辉，华中农业大学信息管理与信息系统专业本科生，曾在睿创微纳智能体开发部担任智能体开发实习生。',
     '我专注于后端系统架构与 AI Agent 开发。在项目实践中，我主导了 RAG 智能面试平台和 Text2SQL 数据分析 Copilot 的设计与落地，积累了从高并发架构到 LLM 工程化的全链路经验。',
     '技术栈方面，我熟练掌握 Spring Boot、Spring Cloud、Kafka、Redis 等后端技术，同时深入 RAG 检索增强、Agent 决策引擎、LLM 网关等 AI 工程化领域。',
     '我享受将复杂问题拆解为可落地的系统设计，热衷于性能优化和技术深度探索。',
   ],
 
   introEn: [
-    "Hi! I'm Liu Hui, an undergraduate student in Information Management & Information Systems at Huazhong Agricultural University, currently interning as a backend developer at Raytron Microelectronics.",
+    "Hi! I'm Liu Hui, an undergraduate student in Information Management & Information Systems at Huazhong Agricultural University. I previously interned in agent development at Raytron Microelectronics.",
     'I focus on backend system architecture and AI Agent development. I have designed and delivered a RAG-powered intelligent interview platform and a Text2SQL data analysis Copilot, gaining full-stack experience from high-concurrency architecture to LLM engineering.',
     'My core stack includes Spring Boot, Spring Cloud, Kafka, and Redis for backend systems, along with RAG, Agent decision engines, and LLM gateways in the AI engineering space.',
     'I enjoy breaking down complex problems into actionable system designs and am passionate about performance optimization and deep technical exploration.',
@@ -287,7 +287,7 @@ export const siteData: SiteData = {
       companyEn: 'Raytron Microelectronics',
       role: '智能体开发部 · 智能体开发实习生',
       roleEn: 'Agent Development Dept · Agent Development Intern',
-      period: '2026.06 - 至今',
+      period: '2026.06 开始 · 已结束',
       content:
         '优化基于 DAG 的动态任务调度，较串行编排平均耗时降低约 40%；通过共享与私有白板分离、按需传递摘要，平均 Token 消耗降低 26.4%。设计 Skill 生命周期状态机，从任务 Trace 中提炼可复用工作流，并统一管理验证、上线、复用、迭代与下线。',
       contentEn:
@@ -396,7 +396,7 @@ export const siteData: SiteData = {
 
   seo: {
     title: '刘辉 | Portfolio - 后端工程师 × AI Agent 开发者',
-    description: '刘辉 - 华中农业大学本科生，后端工程师 & AI Agent 开发者。专注于高并发架构、RAG检索增强、Agent决策引擎。目前在睿创微纳实习。',
+    description: '刘辉 - 华中农业大学本科生，后端工程师 & AI Agent 开发者。专注于高并发架构、RAG 检索增强与 Agent 决策引擎。',
     keywords: '刘辉,后端开发,Java,Spring Boot,AI Agent,RAG,华中农业大学,Portfolio,简历',
     author: '刘辉',
   },
