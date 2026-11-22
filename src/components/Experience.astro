@@ -2,8 +2,7 @@
 import { siteData } from '../data/content';
 import TimelineItem from './TimelineItem.astro';
 
-// The source is chronological by start date; show recent work first.
-const experiences = [...siteData.experiences].reverse();
+const experiences = siteData.experiences;
 ---
 
 <section id="experience" aria-labelledby="experience-title" class="py-16 sm:py-20 px-6">
